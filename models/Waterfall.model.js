@@ -23,7 +23,7 @@ const waterfallSchema = new Schema ({
     },
     transportation: {
         type: [String],
-        enum: ["Bus", "Train", "Walking", "Car", "Other"],
+        enum: ["Bus", "Train", "Walking", "Car", "Boat", "Other"],
         required: true,
     },
     userId: {
