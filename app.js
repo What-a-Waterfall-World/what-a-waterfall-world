@@ -19,7 +19,7 @@ const app = express();
 require("./config")(app);
 
 const capitalize = require("./utils/capitalize");
-const projectName = "what-a-waterfall-world";
+const projectName = "What a Waterfall World";
 
 app.locals.appTitle = `${capitalize(projectName)} created with IronLauncher`;
 
@@ -28,7 +28,10 @@ const indexRoutes = require("./routes/index.routes");
 app.use("/", indexRoutes);
 
 const authRoutes = require("./routes/auth.routes");
-app.use("/auth", authRoutes);
+app.use("/", authRoutes);
+
+const waterfallRoutes = require("./routes/waterfall.routes")
+app.use("/", waterfallRoutes)
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);

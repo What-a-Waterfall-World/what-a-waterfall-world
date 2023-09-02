@@ -5,15 +5,7 @@ const waterfallSchema = new Schema ({
         type: String,
         required: true,
     },   
-    image: {
-        type: String,
-        required: true,
-    },
-    country: {
-        type: String,
-        required: true,
-    },
-    city: {
+    imageUrl: {
         type: String,
         required: true,
     },
@@ -21,15 +13,23 @@ const waterfallSchema = new Schema ({
         type: String,
         required: false,
     },
+    city: {
+        type: String,
+        required: true,
+    },
+    country: {
+        type: String,
+        required: true,
+    },
     transportation: {
         type: [String],
         enum: ["Bus", "Train", "Walking", "Car", "Boat", "Other"],
         required: true,
     },
-    userId: {
-        type: Schema.Types.ObjectId,
-        ref: "User"
-    }
+    // userId: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: "User"
+    // }
 },
 {
     timestamps: true
