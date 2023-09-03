@@ -1,24 +1,27 @@
 <h1>Waterfalls</h1>
 
 {{#each waterfalls}}
-    <div>
-        <h3>Name: {{name}}</h3>
-        <img class="waterfall-imgs" src="{{imageUrl}}" alt="waterfall image">        
-        <p>PostalCode: {{postalCode}}</p>
-        <p>City: {{city}}</p>
-        <p>Country: {{country}}</p>
-        <p>Transportation: {{transportation}}</p>
-        
-        <form action="/waterfalls/{{_id}}" method="POST">
-        <button>See details</button>
-        </form>
+  <div>
+    <h3>Name: {{name}}</h3>
+    <img class="waterfall-imgs" src="{{imageUrl}}" alt="waterfall image" />
+    <p>Postal code: {{postalCode}}</p>
+    <p>City: {{city}}</p>
+    <p>Country: {{country}}</p>
+    <p>Transportation: {{transportation}}</p>
 
-        <form action="/waterfalls/{{_id}}/edit" method="POST">
-        <button>Edit</button>
-        </form>
+    <form action="/waterfall/{{_id}}" method="GET">
+      <button>See details</button>
+    </form>
 
+    <form action="/waterfall/{{_id}}/edit" method="GET">
+      <button>Edit</button>
+    </form>
 
-        {{!-- <a href="/waterfalls/{{_id}}">See details</a>
-        <a href="/waterfalls/{{_id}}/edit">Edit</a> --}}
-    </div>
+    <form action="/waterfall/{{_id}}/delete" method="POST">
+      <button>Delete</button>
+    </form>
+
+    {{!-- <a href="/waterfall/{{_id}}">See details</a>
+        <a href="/waterfall/{{_id}}/edit">Edit</a> --}}
+  </div>
 {{/each}}

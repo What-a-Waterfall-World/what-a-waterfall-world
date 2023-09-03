@@ -1,0 +1,23 @@
+<h1>{{waterfall.name}}</h1>
+
+<img src="{{waterfall.imageUrl}}" alt="picture of {{waterfall.name}}">
+
+<h3>Postal code:</h3>
+<p>{{waterfall.postalCode}}</p>
+
+<h3>City:</h3>
+<p>{{waterfall.city}}</p>
+
+<h3>country:</h3>
+<p>{{waterfall.country}}</p>
+
+<h3>How to get to the waterfall:</h3>
+<p>{{waterfall.transportation}}</p>
+
+<form action="/waterfall/{{waterfall._id}}/edit" method="GET">
+  <button>Edit</button>
+</form>
+
+<form action="/waterfalls" method="GET">
+  <button>Back to list</button>
+</form>

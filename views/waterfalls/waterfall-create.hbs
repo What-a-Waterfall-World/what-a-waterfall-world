@@ -1,0 +1,29 @@
+<h2>Add a new waterfall to the list:</h2>
+
+
+<form method="POST" action="/waterfall/create">
+    <label> Name:
+        <input type="text" name="name" />
+    </label>
+
+    {{!-- <label> Upload image:
+    </label> --}}
+
+    <label> Postal code:
+        <input type="text" name="postalCode"></input>
+    </label>
+
+    <label> City:
+        <input type="text" name="city"></input>
+    </label>
+
+    <label> Country:
+        <input type="text" name="country"></input>
+    </label>
+
+    <label> Advice for transportation:
+               <input type="text" name="transportation"></input>
+    </label>
+
+    <button type="submit"> Add waterfall </button>
+</form>

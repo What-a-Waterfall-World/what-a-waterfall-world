@@ -1,0 +1,33 @@
+<h2>Edit {{waterfall.name}}:</h2>
+
+<form method="POST" action="/waterfall/{{waterfall._id}}/edit">
+    <label> Name:
+        <input type="text" name="name" value="{{waterfall.name}}" />
+    </label>
+
+  <label> Postal code:
+        <input type="text" name="postalCode" value="{{waterfall.postalCode}}"></input>
+    </label>
+
+    <label> City:
+        <input type="text" name="city" value="{{waterfall.city}}"></input>
+    </label>
+
+    <label> Country:
+        <input type="text" name="country" value="{{waterfall.country}}"></input>
+    </label>
+
+    <label> Advice for transportation:
+               <input type="text" name="transportation" value="{{waterfall.transportation}}"></input>
+    </label>
+
+    {{!-- <button type="submit"> Save changes </button> --}}
+
+    <button>Save changes</button>
+</form>
+
+<br>
+
+        <form action="/waterfalls" method="GET">
+        <button>Back to list</button>
+        </form>
