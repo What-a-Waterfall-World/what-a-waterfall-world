@@ -1,5 +1,5 @@
 const { default: mongoose } = require("mongoose");
-const WaterfallModel = require("../models/Waterfall.model");
+const waterfallModel = require("../models/Waterfall.model");
 const MONGO_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/what-a-waterfall-world'
 
 
@@ -34,7 +34,7 @@ const waterfalls = [
     postalCode: "5743",
     city: "Krimml",
     country: "Austria",
-    transportation: ["Train", "Bus"],
+    transportation: "Train and Bus",
 },
     {
     name: `Štrbački buk`,
@@ -50,7 +50,7 @@ const waterfalls = [
     postalCode: "",
     city: `Lozovac`,
     country: `Croatia`,
-    transportation: ["Bus", "Car", "Boat"]
+    transportation: "Bus, Car and Boat"
 },
 ]
 
@@ -60,10 +60,14 @@ mongoose
 .connect(MONGO_URI)
   .then(x => {
     console.log(`Connected to Mongo database: "${x.connections[0].name}"`);
-
-    // Create new waterfalls in the waterfalls collection
-    return WaterfallModel.create(waterfalls);
+    return waterfallModel.deleteMany({});
   })
+  // Delete all existing data from database for a clean start
+    .then((response) => {
+      console.log("Deleted all data from database");
+      return waterfallModel.create(waterfalls);
+    })
+    // Create new waterfalls in the waterfalls collection
   .then(waterfallsFromDB => {
     console.log(`Created ${waterfallsFromDB.length} waterfalls`);
 

@@ -7,7 +7,7 @@ const waterfallSchema = new Schema ({
     },   
     imageUrl: {
         type: String,
-        required: true,
+        required: false,
     },
     postalCode: {
         type: String,
@@ -22,9 +22,8 @@ const waterfallSchema = new Schema ({
         required: true,
     },
     transportation: {
-        type: [String],
-        enum: ["Bus", "Train", "Walking", "Car", "Boat", "Other"],
-        required: true,
+        type: String,
+        required: false,
     },
     // userId: {
     //     type: Schema.Types.ObjectId,
