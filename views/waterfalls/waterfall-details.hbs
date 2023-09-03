@@ -1,6 +1,6 @@
 <h1>{{waterfall.name}}</h1>
 
-<img src="{{waterfall.imageUrl}}" alt="picture of {{waterfall.name}}">
+<img class="waterfall-imgs" src="{{waterfall.imageUrl}}" alt="picture of {{waterfall.name}}">
 
 <h3>Postal code:</h3>
 <p>{{waterfall.postalCode}}</p>
@@ -17,6 +17,10 @@
 <form action="/waterfall/{{waterfall._id}}/edit" method="GET">
   <button>Edit</button>
 </form>
+
+<form action="/waterfalls/{{waterfall._id}}/delete" method="POST">
+        <button type="submit" onclick="confirmAction()">Delete</button>
+        </form>
 
 <form action="/waterfalls" method="GET">
   <button>Back to list</button>
