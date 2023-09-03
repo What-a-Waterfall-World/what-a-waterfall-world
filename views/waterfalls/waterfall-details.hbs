@@ -18,15 +18,21 @@
   <button>Edit</button>
 </form>
 
-<form action="/waterfall/{{waterfall._id}}/delete" method="POST">
-    <button type="submit" onclick="confirmAction()">Delete</button>
+<form id="deleteForm" action="/waterfall/{{waterfall._id}}/delete" method="POST">
+    <button type="submit" onclick="confirmAction(event)">Delete</button>
 </form>
 
 {{!-- Add confirmation alert before delete a waterfall --}}
 <script>
-    const confirmAction = () => {
-    const response = confirm("Are you sure you want to delete it?");
-    return response; // Return true if confirmed, false otherwise
+    const confirmAction = (event) => {
+    // Disable form submission
+    event.preventDefault()
+
+    const confirmed = confirm("Are you sure you want to delete it?");
+
+    // Delete waterfall when Ok is clicked
+    if(confirmed)
+        document.getElementById("deleteForm").submit()
 }
 </script>
 
