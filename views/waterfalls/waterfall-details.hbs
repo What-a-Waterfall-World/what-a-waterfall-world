@@ -1,6 +1,6 @@
 <h1>{{waterfall.name}}</h1>
 
-<img src="{{waterfall.imageUrl}}" alt="picture of {{waterfall.name}}">
+<img class="waterfall-imgs" src="{{waterfall.imageUrl}}" alt="picture of {{waterfall.name}}">
 
 <h3>Postal code:</h3>
 <p>{{waterfall.postalCode}}</p>
@@ -17,6 +17,25 @@
 <form action="/waterfall/{{waterfall._id}}/edit" method="GET">
   <button>Edit</button>
 </form>
+
+<form id="deleteForm" action="/waterfall/{{waterfall._id}}/delete" method="POST">
+    <button type="submit" onclick="confirmAction(event)">Delete</button>
+</form>
+
+{{!-- Add confirmation alert before delete a waterfall --}}
+<script>
+    const confirmAction = (event) => {
+    // Disable form submission
+    event.preventDefault()
+
+    const confirmed = confirm("Are you sure you want to delete it?");
+
+    // Delete waterfall when Ok is clicked
+    if(confirmed)
+        document.getElementById("deleteForm").submit()
+}
+</script>
+
 
 <form action="/waterfalls" method="GET">
   <button>Back to list</button>

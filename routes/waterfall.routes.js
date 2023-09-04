@@ -27,15 +27,10 @@ router.get("/waterfall/create", (req, res, next) => {
 
 // POST: process form to create new waterfall
 router.post("/waterfall/create", (req, res, next) => {
-  const newWaterfall = {
-    name: req.body.name,
-    postalCode: req.body.postalCode,
-    country: req.body.country,
-    city: req.body.city,
-    transportation: req.body.transportation,
-  };
+  const { name, postalCode, country, city, transportation } = req.body;
 
-  Waterfall.create(newWaterfall)
+
+  Waterfall.create({ name, postalCode, country, city, transportation })
     .then((newWaterfall) => {
       res.redirect("/waterfalls");
     })

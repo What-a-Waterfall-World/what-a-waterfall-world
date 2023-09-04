@@ -60,7 +60,7 @@ mongoose
 .connect(MONGO_URI)
   .then(x => {
     console.log(`Connected to Mongo database: "${x.connections[0].name}"`);
-    return waterfallModel.deleteMany({});
+    return waterfallModel.deleteMany({}); //Clean database before run
   })
   // Delete all existing data from database for a clean start
     .then((response) => {
