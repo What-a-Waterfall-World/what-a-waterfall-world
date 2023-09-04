@@ -1,33 +1,62 @@
 <h2>Edit {{waterfall.name}}:</h2>
 
-<form method="POST" action="/waterfall/{{waterfall._id}}/edit">
-    <label> Name:
-        <input type="text" name="name" value="{{waterfall.name}}" />
+<form
+  method="POST"
+  action="/waterfall/{{waterfall._id}}/edit"
+  enctype="multipart/form-data"
+>
+  <label>
+    Name:
+    <input type="text" name="name" value="{{waterfall.name}}" />
+  </label>
+
+  <label>
+    Postal code:
+    <input type="text" name="postalCode" value="{{waterfall.postalCode}}" />
+  </label>
+
+  <label>
+    City:
+    <input type="text" name="city" value="{{waterfall.city}}" />
+  </label>
+
+  <label>
+    Country:
+    <input type="text" name="country" value="{{waterfall.country}}" />
+  </label>
+
+  <label>
+    Advice for transportation:
+    <input
+      type="text"
+      name="transportation"
+      value="{{waterfall.transportation}}"
+    />
+  </label>
+
+  {{! ***** IMAGE UPLOAD ******}}
+  <div class="form-group">
+    {{! div & class = copied from Ironhack documentation, just for inspiration}}
+    <label>Change current image:
+      <input type="file" name="waterfall-image" class="form-control-file" />
+      <input
+        type="text"
+        name="existingImage"
+        hidden
+        value="{{waterfall.imageUrl}}"
+      />
     </label>
+  </div>
 
-  <label> Postal code:
-        <input type="text" name="postalCode" value="{{waterfall.postalCode}}"></input>
-    </label>
-
-    <label> City:
-        <input type="text" name="city" value="{{waterfall.city}}"></input>
-    </label>
-
-    <label> Country:
-        <input type="text" name="country" value="{{waterfall.country}}"></input>
-    </label>
-
-    <label> Advice for transportation:
-               <input type="text" name="transportation" value="{{waterfall.transportation}}"></input>
-    </label>
-
-    {{!-- <button type="submit"> Save changes </button> --}}
-
-    <button>Save changes</button>
+  <button>Save changes</button>
 </form>
 
-<br>
+<br />
 
-        <form action="/waterfalls" method="GET">
-        <button>Back to list</button>
-        </form>
+<form action="/waterfall/{{waterfall._id}}" method="GET">
+  <button>Back to waterfall details</button>
+</form>
+
+<form action="/waterfalls" method="GET">
+  <button>Back to full waterfalls list</button>
+</form>
