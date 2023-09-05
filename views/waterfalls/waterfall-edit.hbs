@@ -1,62 +1,109 @@
-<h2>Edit {{waterfall.name}}:</h2>
+<div class="row">
+  <h1 class="text-center title-form">Change details of {{waterfall.name}}</h1>
+  <div class="col-6 offset-3">
+    <form
+      method="POST"
+      action="/waterfall/{{waterfall._id}}/edit"
+      enctype="multipart/form-data"
+    >
 
-<form
-  method="POST"
-  action="/waterfall/{{waterfall._id}}/edit"
-  enctype="multipart/form-data"
->
-  <label>
-    Name:
-    <input type="text" name="name" value="{{waterfall.name}}" />
-  </label>
+      <div class="mb-3">
+        <label class="form-label">
+          Name Waterfall:
+          <input
+            class="form-control"
+            type="text"
+            name="name"
+            placeholder="Name Waterfall"
+            value="{{waterfall.name}}"
+          />
+        </label>
+      </div>
 
-  <label>
-    Postal code:
-    <input type="text" name="postalCode" value="{{waterfall.postalCode}}" />
-  </label>
+      <div class="mb-3">
+        <label class="form-label">
+          Country:
+          <input
+            class="form-control"
+            type="text"
+            name="country"
+            placeholder="Country"
+            value="{{waterfall.country}}"
+          />
+        </label>
+      </div>
 
-  <label>
-    City:
-    <input type="text" name="city" value="{{waterfall.city}}" />
-  </label>
+      <div class="mb-3">
+        <label class="form-label">
+          City:
+          <input
+            class="form-control"
+            type="text"
+            name="city"
+            placeholder="City"
+            value="{{waterfall.city}}"
+          />
+        </label>
+      </div>
 
-  <label>
-    Country:
-    <input type="text" name="country" value="{{waterfall.country}}" />
-  </label>
+      <div class="mb-3">
+        <label class="form-label">
+          Postal code:
+          <input
+            class="form-control"
+            type="text"
+            name="postalCode"
+            placeholder="Postal Code"
+            value="{{waterfall.postalCode}}"
+          />
+        </label>
+      </div>
 
-  <label>
-    Advice for transportation:
-    <input
-      type="text"
-      name="transportation"
-      value="{{waterfall.transportation}}"
-    />
-  </label>
+      <div class="mb-3">
+        <label class="form-label">
+          How to get here:
+          <textarea
+            class="form-control"
+            rows="4"
+            cols="40"
+            type="text"
+            name="transportation"
+            placeholder="Share your recommendations for traveling to this waterfall"
+            value="{{waterfall.transportation}}"
+          ></textarea>
+        </label>
+      </div>
 
-  {{! ***** IMAGE UPLOAD ******}}
-  <div class="form-group">
-    {{! div & class = copied from Ironhack documentation, just for inspiration}}
-    <label>Change current image:
-      <input type="file" name="waterfall-image" class="form-control-file" />
-      <input
-        type="text"
-        name="existingImage"
-        hidden
-        value="{{waterfall.imageUrl}}"
-      />
-    </label>
+      {{! ********* IMAGE UPLOAD: *********}}
+      <div class="form-group mb-3">
+        <label class="form-label">Change existing image:
+          <input
+            class="form-control"
+            {{! form-control-file also needed?}}
+            type="file"
+            name="waterfall-image"
+          />
+          <input
+            type="text"
+            name="existingImage"
+            hidden
+            value="{{waterfall.imageUrl}}"
+          />
+        </label>
+      </div>
+
+      <button class="btn btn-success mb-3">
+        Save changes
+      </button>
+
+    </form>
+
+    <form action="/waterfall/{{waterfall._id}}" method="GET">
+      <button class="btn btn-danger mb-3">Cancel and back to waterfall details</button>
+    </form>
+    <br />
+
+    <a href="/waterfalls">All waterfalls</a>
+
   </div>
-
-  <button>Save changes</button>
-</form>
-
-<br />
-
-<form action="/waterfall/{{waterfall._id}}" method="GET">
-  <button>Back to waterfall details</button>
-</form>
-
-<form action="/waterfalls" method="GET">
-  <button>Back to full waterfalls list</button>
-</form>
+</div>
