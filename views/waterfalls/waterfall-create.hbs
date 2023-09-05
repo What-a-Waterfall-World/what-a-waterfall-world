@@ -1,42 +1,86 @@
-<h2>Add a new waterfall to the list:</h2>
+<div class="row">
+  <h1 class="text-center">Add a waterfall</h1>
+  <div class="col-6 offset-3">
+    <form
+      method="POST"
+      action="/waterfall/create"
+      enctype="multipart/form-data"
+    >
 
-<form method="POST" action="/waterfall/create" enctype="multipart/form-data">
-  <label>
-    Name:
-    <input type="text" name="name" />
-  </label>
+      <div class="mb-3">
+        <label class="form-label">
+          Name Waterfall:
+          <input
+            class="form-control"
+            type="text"
+            name="name"
+            placeholder="Name Waterfall"
+          />
+        </label>
+      </div>
 
-  {{! <label> Upload image:
-    </label> }}
+      <div class="mb-3">
+        <label class="form-label">
+          Country:
+          <input
+            class="form-control"
+            type="text"
+            name="country"
+            placeholder="Country"
+          />
+        </label>
+      </div>
 
-  <label>
-    Postal code:
-    <input type="text" name="postalCode" />
-  </label>
+      <div class="mb-3">
+        <label class="form-label">
+          City:
+          <input
+            class="form-control"
+            type="text"
+            name="city"
+            placeholder="City"
+          />
+        </label>
+      </div>
 
-  <label>
-    City:
-    <input type="text" name="city" />
-  </label>
+      <div class="mb-3"> 
+        <label class="form-label">
+          Postal code:
+          <input
+            class="form-control" 
+            type="text"
+            name="postalCode"
+            placeholder="Postal Code"
+          />
+        </label>
+      </div>
 
-  <label>
-    Country:
-    <input type="text" name="country" />
-  </label>
+      <div class="mb-3">
+        <label class="form-label">
+          How to get here:
+          <textarea
+            class="form-control" rows="4" cols="40"
+            type="text"
+            name="transportation"
+            placeholder="Share your recommendations for traveling to this waterfall"
+          ></textarea>
+        </label>
+      </div>
 
-  <label>
-    Advice for transportation:
-    <input type="text" name="transportation" />
-  </label>
+      {{! ********* IMAGE UPLOAD: *********}}
+      <div class="mb-3">
+        <label for="formFile" class="form-label">Upload cover image:
+          <input class="form-control" type="file" name="waterfall-image" id="formFile" />
+        </label>
+      </div>
 
-  {{! ********* IMAGE UPLOAD: *********}}
-  <div class="form-group">
-    <label>Image:
-      <input type="file" name="waterfall-image" class="form-control-file" />
-      {{! div's and class = copied from Ironhack documentation for now, just as inspiration for building later with bootstrap}}
-    </label>
+      <button type="submit" class="btn btn-success mb-3">
+        Add waterfall
+      </button>
+
+    </form>
+
+    <a href="/waterfalls">All waterfalls</a>
+
   </div>
-
-  <button type="submit"> Add waterfall </button>
-
-</form>
+</div>
