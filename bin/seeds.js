@@ -13,7 +13,7 @@ const waterfalls = [
     transportation: "Bus",
      location: {
       type: "Point",
-      coordinates: [6.2013, 45.8543],
+      coordinates: [45.8337547, 6.2255572],
     }
    
 },
