@@ -11,6 +11,11 @@ const waterfalls = [
     city: "Talloires",
     country: "France",
     transportation: "Bus",
+     location: {
+      type: "Point",
+      coordinates: [6.2013, 45.8543],
+    }
+   
 },
     {
     name: `Staubbach Falls`,
@@ -19,6 +24,10 @@ const waterfalls = [
     country: "Switzerland",    
     city: "Lauterbrunnen",
     transportation: "Train",
+     location: {
+      type: "Point",
+      coordinates: [7.9090, 46.5942],
+    }
 },
     {
     name: `Cascate Nardis`,
@@ -27,6 +36,10 @@ const waterfalls = [
     city: "Giustino, Autonomous Province of Trento",
     country: "Italy",
     transportation: "Car",
+     location: {
+      type: "Point",
+      coordinates: [10.9822, 46.3014],
+    }
 },
     {
     name: ` Krimml Waterfall`,
@@ -35,6 +48,10 @@ const waterfalls = [
     city: "Krimml",
     country: "Austria",
     transportation: "Train and Bus",
+    location: {
+      type: "Point",
+      coordinates: [12.1839, 47.2127],
+    }
 },
     {
     name: `Štrbački buk`,
@@ -43,6 +60,10 @@ const waterfalls = [
     city: `Orašac`,
     country: `Bosnia and Herzegovina`,
     transportation: "Car",
+    location: {
+      type: "Point",
+      coordinates: [16.00729, 44.656107]
+    }
 },
     {
     name: `Krka National Park`,
@@ -50,7 +71,11 @@ const waterfalls = [
     postalCode: "",
     city: `Lozovac`,
     country: `Croatia`,
-    transportation: "Bus, Car and Boat"
+    transportation: "Bus, Car and Boat",
+    location: {
+      type: "Point",
+      coordinates: [15.9699089, 43.8666055] //long, lat
+  }
 },
 ]
 
