@@ -26,7 +26,7 @@ const waterfalls = [
     transportation: "Train",
      location: {
       type: "Point",
-      coordinates: [7.9090, 46.5942],
+      coordinates: [46.5942, 7.9090],
     }
 },
     {
@@ -38,7 +38,7 @@ const waterfalls = [
     transportation: "Car",
      location: {
       type: "Point",
-      coordinates: [10.9822, 46.3014],
+      coordinates: [46.3014, 10.9822],
     }
 },
     {
@@ -50,7 +50,7 @@ const waterfalls = [
     transportation: "Train and Bus",
     location: {
       type: "Point",
-      coordinates: [12.1839, 47.2127],
+      coordinates: [47.2127, 12.1839],
     }
 },
     {
@@ -62,7 +62,7 @@ const waterfalls = [
     transportation: "Car",
     location: {
       type: "Point",
-      coordinates: [16.00729, 44.656107]
+      coordinates: [44.656107, 16.00729]
     }
 },
     {
@@ -74,7 +74,7 @@ const waterfalls = [
     transportation: "Bus, Car and Boat",
     location: {
       type: "Point",
-      coordinates: [15.9699089, 43.8666055] //long, lat
+      coordinates: [43.8666055, 15.9699089]
   }
 },
 ]
