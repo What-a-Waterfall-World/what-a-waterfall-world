@@ -28,7 +28,7 @@ const indexRoutes = require("./routes/index.routes");
 app.use("/", indexRoutes);
 
 const authRoutes = require("./routes/auth.routes");
-app.use("/", authRoutes);
+app.use("/auth", authRoutes);
 
 const waterfallRoutes = require("./routes/waterfall.routes");
 app.use("/", waterfallRoutes);
