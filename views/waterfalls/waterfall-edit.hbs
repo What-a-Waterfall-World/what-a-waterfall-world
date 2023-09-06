@@ -5,62 +5,105 @@
       method="POST"
       action="/waterfall/{{waterfall._id}}/edit"
       enctype="multipart/form-data"
+      class="needs-validation" novalidate 
     >
 
       <div class="mb-3">
-        <label class="form-label">
+      <label class="form-label" for="name-edit">
           Name Waterfall:
           <input
             class="form-control"
             type="text"
             name="name"
             placeholder="Name Waterfall"
+            id="name-edit"
+            required
             value="{{waterfall.name}}"
           />
+          <div class="invalid-feedback">
+        Please enter the name of the waterfall
+      </div>
         </label>
       </div>
 
       <div class="mb-3">
-        <label class="form-label">
+        <label class="form-label" for="country-edit">
           Country:
           <input
             class="form-control"
             type="text"
             name="country"
             placeholder="Country"
+            id="country-edit"
+            required
             value="{{waterfall.country}}"
           />
+            <div class="invalid-feedback">
+        Please enter the country where the waterfall is located
+      </div>
         </label>
       </div>
 
       <div class="mb-3">
-        <label class="form-label">
+<label class="form-label" for="city-edit">
           City:
           <input
             class="form-control"
             type="text"
             name="city"
             placeholder="City"
+            id="city-edit"
+            required
             value="{{waterfall.city}}"
           />
+           <div class="invalid-feedback">
+        Please enter the city where the waterfall is located
+      </div>
         </label>
       </div>
 
       <div class="mb-3">
-        <label class="form-label">
+         <label class="form-label" for="postal-edit">
           Postal code:
           <input
             class="form-control"
             type="text"
             name="postalCode"
             placeholder="Postal Code"
+            id="postal-edit"
             value="{{waterfall.postalCode}}"
           />
         </label>
       </div>
 
+       <div class="mb-3"> 
+        <label class="form-label" for="latitude-edit">
+          Latitude:
+          <input
+            class="form-control" 
+            type="text"
+            name="lat"
+            placeholder="Latitude"
+            id="latitude-edit"
+          />
+        </label>
+      </div>
+
+      <div class="mb-3"> 
+        <label class="form-label" for="longitude-edit">
+          Longitude:
+          <input
+            class="form-control" 
+            type="text"
+            name="lng"
+            placeholder="Longitude"
+            id="longitude-edit"
+          />
+        </label>
+      </div>
+
       <div class="mb-3">
-        <label class="form-label">
+ <label class="form-label" for="transport-edit">
           How to get here:
           <textarea
             class="form-control"
@@ -69,6 +112,7 @@
             type="text"
             name="transportation"
             placeholder="Share your recommendations for traveling to this waterfall"
+            id="transport-edit"  
             value="{{waterfall.transportation}}"
           ></textarea>
         </label>
@@ -79,7 +123,6 @@
         <label class="form-label">Change existing image:
           <input
             class="form-control"
-            {{! form-control-file also needed?}}
             type="file"
             name="waterfall-image"
           />

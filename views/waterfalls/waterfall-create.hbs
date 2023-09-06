@@ -3,83 +3,97 @@
   <div class="col-6 offset-3">
     <form method="POST" action="/waterfall/create" enctype="multipart/form-data" class="needs-validation" novalidate >
       <div class="mb-3">
-        <label class="form-label">
+        <label class="form-label" for="name-add">
           Name Waterfall:
           <input
             class="form-control"
             type="text"
             name="name"
             placeholder="Name Waterfall"
+            id="name-add"
             required
           />
-          <div class="invalid-feedback">Please provide a name.</div>
+          <div class="invalid-feedback">
+        Please enter the name of the waterfall
+      </div>
         </label>
       </div>
 
       <div class="mb-3">
-        <label class="form-label">
+        <label class="form-label" for="country-add">
           Country:
           <input
             class="form-control"
             type="text"
             name="country"
             placeholder="Country"
+            id="country-add"
             required
           />
+          <div class="invalid-feedback">
+        Please enter the country where the waterfall is located
+      </div>
         </label>
       </div>
 
       <div class="mb-3">
-        <label class="form-label">
+        <label class="form-label" for="city-add">
           City:
           <input
             class="form-control"
             type="text"
             name="city"
             placeholder="City"
+            id="city-add"
             required
           />
+        <div class="invalid-feedback">
+        Please enter the city where the waterfall is located
+      </div>
         </label>
       </div>
 
       <div class="mb-3">
-        <label class="form-label">
+        <label class="form-label" for="postal-add">
           Postal code:
           <input
             class="form-control"
             type="text"
             name="postalCode"
             placeholder="Postal Code"
+            id="postal-add"
           />
         </label>
       </div>
 
       <div class="mb-3"> 
-        <label class="form-label">
+        <label class="form-label" for="latitude-add">
           Latitude:
           <input
             class="form-control" 
             type="text"
             name="lat"
             placeholder="Latitude"
+            id="latitude-add"
           />
         </label>
       </div>
 
       <div class="mb-3"> 
-        <label class="form-label">
+        <label class="form-label" for="longitude-add">
           Longitude:
           <input
             class="form-control" 
             type="text"
             name="lng"
-            placeholder="Longitude"
+            placeholder="Longitude-add"
+            id="longitude-add"
           />
         </label>
       </div>
 
       <div class="mb-3">
-        <label class="form-label">
+        <label class="form-label" for="transport-add">
           How to get here:
           <textarea
             class="form-control"
@@ -88,6 +102,7 @@
             type="text"
             name="transportation"
             placeholder="Share your recommendations for traveling to this waterfall"
+            id="transport-add"
           ></textarea>
         </label>
       </div>
