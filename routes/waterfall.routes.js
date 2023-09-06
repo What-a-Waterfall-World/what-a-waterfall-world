@@ -47,7 +47,7 @@ router.post(
   imageUploader.single("waterfall-image"),
   (req, res, next) => {
     //imageUploader.single() is the middleware function we need to upload the picture. Name 'waterfall-image' is same name as in waterfall-create.hbs file
-    const { name, postalCode, country, city, transportation } = req.body;
+    const { name, postalCode, country, city, transportation, lat, lng } = req.body;
 
     Waterfall.create({
       name,
@@ -55,7 +55,8 @@ router.post(
       country,
       city,
       transportation,
-      imageUrl: req.file.path,
+      imageUrl: req.file.path, //fix when no image
+      location: {coordinates: [lat, lng]},
     })
       .then((newWaterfall) => {
         res.redirect("/waterfalls");
