@@ -47,7 +47,7 @@ router.post(
   imageUploader.single("waterfall-image"),
   (req, res, next) => {
     //imageUploader.single() is the middleware function we need to upload the picture. Name 'waterfall-image' is same name as in waterfall-create.hbs file
-    const { name, postalCode, country, city, transportation } = req.body;
+    const { name, postalCode, country, city, transportation, lat, lng } = req.body;
 
     Waterfall.create({
       name,
@@ -55,7 +55,8 @@ router.post(
       country,
       city,
       transportation,
-      imageUrl: req.file.path,
+      imageUrl: req.file.path, //fix when no image
+      location: {coordinates: [lat, lng]},
     })
       .then((newWaterfall) => {
         res.redirect("/waterfalls");
@@ -131,10 +132,12 @@ router.post("/waterfall/:waterfallId/delete", (req, res, next) => {
 // GET: display details of a waterfall
 router.get("/waterfall/:waterfallId", (req, res, next) => {
   const waterfallId = req.params.waterfallId;
+  const mapsApiKey = process.env.GOOGLE_MAPS_KEY
   Waterfall.findById(waterfallId)
     .then((waterfallFromDB) => {
       res.render("waterfalls/waterfall-details", {
         waterfall: waterfallFromDB,
+        mapsApiKey: mapsApiKey
       });
     })
     .catch((e) => {
@@ -142,5 +145,21 @@ router.get("/waterfall/:waterfallId", (req, res, next) => {
       next(e);
     });
 });
+
+router.get("/overview", (req, res, next) => {
+  const mapsApiKey = process.env.GOOGLE_MAPS_KEY
+  Waterfall.find()
+    .then((waterfallsFromDB) => {
+      res.render("waterfalls/map-overview", {
+        waterfalls: JSON.stringify(waterfallsFromDB),
+        mapsApiKey: mapsApiKey
+      });
+    })
+    .catch((e) => {
+      console.log("Error getting waterfalls from DB", e);
+      next(e);
+    });
+});
+
 
 module.exports = router;
