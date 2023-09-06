@@ -11,7 +11,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
   cloudinary,
   params: {
-    allowed_formats: ["jpg", "png", "raw"],
+    allowed_formats: ["jpg", "png", "jpeg"],
     folder: "what-a-waterfall-world", // The name of the folder in cloudinary
   },
 });
