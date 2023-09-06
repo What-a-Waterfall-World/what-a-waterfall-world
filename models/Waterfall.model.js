@@ -27,16 +27,16 @@ const waterfallSchema = new Schema(
       required: false,
     },
     location: {
-        type: {
-            type: String,
-            enum: ['Point'],
-            // required: true,
+      type: {
+        type: String,
+        enum: ["Point"],
+        // required: true,
+      },
+      coordinates: {
+        type: [Number],
+        // required: true,
+      },
     },
-        coordinates: {
-            type: [Number],
-            // required: true,
-    }
-}
     // userId: {
     //     type: Schema.Types.ObjectId,
     //     ref: "User"

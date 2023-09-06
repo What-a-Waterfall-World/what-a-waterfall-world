@@ -1,12 +1,7 @@
 <div class="row">
   <h1 class="text-center title-form">Add a waterfall</h1>
   <div class="col-6 offset-3">
-    <form
-      method="POST"
-      action="/waterfall/create"
-      enctype="multipart/form-data"
-    >
-
+    <form method="POST" action="/waterfall/create" enctype="multipart/form-data" class="needs-validation" novalidate >
       <div class="mb-3">
         <label class="form-label">
           Name Waterfall:
@@ -15,7 +10,9 @@
             type="text"
             name="name"
             placeholder="Name Waterfall"
+            required
           />
+          <div class="invalid-feedback">Please provide a name.</div>
         </label>
       </div>
 
@@ -27,6 +24,7 @@
             type="text"
             name="country"
             placeholder="Country"
+            required
           />
         </label>
       </div>
@@ -39,15 +37,16 @@
             type="text"
             name="city"
             placeholder="City"
+            required
           />
         </label>
       </div>
 
-      <div class="mb-3"> 
+      <div class="mb-3">
         <label class="form-label">
           Postal code:
           <input
-            class="form-control" 
+            class="form-control"
             type="text"
             name="postalCode"
             placeholder="Postal Code"
@@ -59,7 +58,9 @@
         <label class="form-label">
           How to get here:
           <textarea
-            class="form-control" rows="4" cols="40"
+            class="form-control"
+            rows="4"
+            cols="40"
             type="text"
             name="transportation"
             placeholder="Share your recommendations for traveling to this waterfall"
@@ -70,7 +71,12 @@
       {{! ********* IMAGE UPLOAD: *********}}
       <div class="mb-3">
         <label for="formFile" class="form-label">Upload cover image:
-          <input class="form-control" type="file" name="waterfall-image" id="formFile" />
+          <input
+            class="form-control"
+            type="file"
+            name="waterfall-image"
+            id="formFile"
+          />
         </label>
       </div>
 

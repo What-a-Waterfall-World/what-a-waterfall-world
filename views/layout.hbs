@@ -62,7 +62,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="/js/script.js"></script>
-  </body>
 
   <footer class="footer bg-light py-3 mt-auto">
     <div class="container">
@@ -71,4 +70,28 @@
     </div>
   </footer>
 
+
+{{! **** js for form validation on create & edit, will move this later! **** }}
+    <script>
+        (function () {
+            'use strict'
+        
+            const forms = document.querySelectorAll('.needs-validation')
+
+            Array.from(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+    </script>
+
+
+  </body>
 </html>
