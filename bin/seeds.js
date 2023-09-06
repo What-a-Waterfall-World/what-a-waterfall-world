@@ -1,6 +1,6 @@
 const { default: mongoose } = require("mongoose");
 const waterfallModel = require("../models/Waterfall.model");
-const MONGO_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/what-a-waterfall-world'
+const MONGO_URI = process.env.MONGODB_URI || 'mongodb://0.0.0.0:27017/what-a-waterfall-world'
 
 
 const waterfalls = [
