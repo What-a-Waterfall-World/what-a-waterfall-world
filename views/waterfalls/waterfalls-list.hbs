@@ -1,11 +1,30 @@
-<h1>Waterfalls</h1>
+{{!****** show waterfalls based on search ******}}
+{{#if country}}
+<h1>Waterfalls in {{country}}</h1>
+{{else}}
+<h1>All Waterfalls</h1>
+{{/if}}
 
+{{!****** Filter waterfalls ******}}
+<form action="/waterfalls" method="GET">
+    <label for="country-select">
+       Filter by country:     </label>
+      <select name="country" id="country-select">
+            <option value="">See All</option>
+              {{#each countries}}
+            <option value="{{this}}" {{#if (eq this country)}}selected{{/if}}>{{this}}</option>
+              {{/each}}
+      </select>
+       <button type="submit">search</button>
+</form>
+
+{{!****** Display list of waterfalls ******}}
 {{#each waterfalls}}
   <div>
-    <h3>Name: {{name}}</h3>
+    <h3>{{name}}</h3>
     <img class="waterfall-imgs" src="{{imageUrl}}" alt="waterfall image" />
    
-    <p>Country: {{country}}</p>
+    <p>{{country}}</p>
 
     <form action="/waterfall/{{_id}}" method="GET">
       <button>See details</button>

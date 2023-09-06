@@ -33,6 +33,11 @@ app.use("/auth", authRoutes);
 const waterfallRoutes = require("./routes/waterfall.routes");
 app.use("/", waterfallRoutes);
 
+// Handlebar helper for filter function in all-waterfalls-list:
+hbs.registerHelper('eq', function(a, b) {
+    return a === b;
+  });
+
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
 

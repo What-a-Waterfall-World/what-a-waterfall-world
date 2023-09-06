@@ -3,12 +3,26 @@ const Waterfall = require("../models/Waterfall.model");
 // ********* require fileUploader in order to use it *********
 const imageUploader = require("../config/cloudinary.config");
 
-// GET: see all waterfalls
+// GET: see all waterfalls and filter waterfalls for dropdown menu
 router.get("/waterfalls", (req, res, next) => {
-  Waterfall.find()
-    .then((allWaterfalls) =>
-      res.render("waterfalls/waterfalls-list", { waterfalls: allWaterfalls })
-    )
+  const { country } = req.query;
+  let filter = {};
+
+  if (country) {
+    filter.country = country;
+  }
+
+  Waterfall.find(filter)
+    .then((allWaterfalls) => {
+      return Waterfall.distinct("country") // distinct = get all unique values in a array (this is a Mongoose function)
+      .then((countries) => {
+        res.render("waterfalls/waterfalls-list", {
+          waterfalls: allWaterfalls,
+          countries,
+          country,
+        });
+      });
+    })
     .catch((e) => {
       console.log("Error getting waterfalls data from DB", e);
       next(e);
@@ -89,6 +103,7 @@ router.post(
     Waterfall.findByIdAndUpdate(
       waterfallId,
       { name, postalCode, country, city, transportation, imageUrl },
+      { runValidators: true }, // when creating something mongoose will check the validators if something is required or not, but by updating it does not pass the model again. When you set this to runValidators: true, it actually will pass the validators again to be sure all the fields are correctyl edited.
       { new: true }
     )
       .then((updatedWaterfall) =>
