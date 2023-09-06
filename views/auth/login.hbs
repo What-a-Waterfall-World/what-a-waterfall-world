@@ -1,24 +1,34 @@
-<div id="login-form">
-  <h2>Log In</h2>
-  <form action="/auth/login" method="POST">
+<div class="row" id="login-form">
+  <h1 class="text-center title-form">Log In</h1>
+  <div class="col-6 offset-3">
+    <form action="/auth/login" method="POST">
 
-    <label> Username
-      <input type="text" name="username" placeholder="Your username" />
-    </label>
+<div class="mb-3">
+      <label class="form-label">
+        Username
+        <input class="form-control" type="text" name="username" placeholder="Your username" />
+      </label>
+</div>
 
-    <label> Email
-      <input type="email" name="email" placeholder="Your email" />
-    </label>
+<div class="mb-3">
+      <label class="form-label">
+        Email
+        <input class="form-control" type="email" name="email" placeholder="Your email" />
+      </label>
+</div>
 
-    <label> Password
-      <input type="password" name="password" placeholder="Your password" />
-    </label>
+<div class="mb-3">
+      <label class="form-label">
+        Password
+        <input class="form-control" type="password" name="password" placeholder="Your password" />
+      </label>
+</div>
 
-    <button type="submit">Log In</button>
+      <button class="btn btn-dark mb-3" type="submit">Log In</button>
 
-
-    {{#if errorMessage}}
-      <p class="error">{{errorMessage}}</p>
-    {{/if}}
-  </form>
+      {{#if errorMessage}}
+        <p class="error">{{errorMessage}}</p>
+      {{/if}}
+    </form>
+  </div>
 </div>

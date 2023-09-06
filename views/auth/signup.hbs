@@ -1,24 +1,50 @@
-<div id="form">
-  <h2>Sign Up</h2>
-  <form action="/auth/signup" method="POST">
+<div class="row" id="form">
+  <h1 class="text-center title-form">Sign Up</h1>
+  <div class="col-6 offset-3">
 
-    <label> Username
-      <input type="text" name="username" placeholder="Your username" />
-    </label>
+    <form action="/auth/signup" method="POST">
 
-    <label> Email
-      <input type="email" name="email" placeholder="Your email" />
-    </label>
+      <div class="mb-3">
+        <label class="form-label">
+          Username
+          <input
+            class="form-control"
+            type="text"
+            name="username"
+            placeholder="Your username"
+          />
+        </label>
+      </div>
 
-    <label> Password
-      <input type="password" name="password" placeholder="Your password" />
-    </label>
+      <div class="mb-3">
+        <label class="form-label">
+          Email
+          <input
+            class="form-control"
+            type="email"
+            name="email"
+            placeholder="Your email"
+          />
+        </label>
+      </div>
 
-    <button type="submit">Sign Up</button>
+      <div class="mb-3">
+        <label class="form-label">
+          Password
+          <input
+            class="form-control"
+            type="password"
+            name="password"
+            placeholder="Your password"
+          />
+        </label>
+      </div>
 
+      <button class="btn btn-dark mb-3" type="submit">Sign Up</button>
 
-    {{#if errorMessage}}
-      <p class="error">{{errorMessage}}</p>
-    {{/if}}
-  </form>
+      {{#if errorMessage}}
+        <p class="error">{{errorMessage}}</p>
+      {{/if}}
+    </form>
+  </div>
 </div>
