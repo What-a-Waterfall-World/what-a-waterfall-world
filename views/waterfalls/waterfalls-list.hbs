@@ -23,7 +23,7 @@
                   <option value="{{this}}" {{#if (eq this ../country)}}selected{{/if}}>{{this}}</option>
                 {{/each}}
         </select>
-        <button type="submit" class="btn btn-secondary" >search</button>
+        <button type="submit" class="btn btn-secondary">Search</button>
   </form>
 
 </div>
@@ -38,23 +38,20 @@
 
   {{#each waterfalls}}
       <div class="col-md-4 waterfall-card">
-        <div class="card">
+      <a style="text-decoration: none" href="/waterfall/{{_id}}" >        
+      <div class="card">
 
-        <form action="/waterfall/{{_id}}" method="GET">
           <img class="image" alt="waterfall image" src="{{imageUrl}}"/>
-        </form>
         
         <div class="card-body">
         <h5>{{name}}</h5>
         <p "card-text">📍 {{country}}</p>
-          
-          <form action="/waterfall/{{_id}}" method="GET">
-            <button>See details</button>
-          </form>
-        </div>
+        </a>
+        </div> 
       </div> 
       </div>
  
   {{/each}}
 </div>
-      <div>
+<div>
+
