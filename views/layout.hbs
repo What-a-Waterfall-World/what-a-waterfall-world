@@ -21,12 +21,14 @@
   <body class="d-flex flex-column vh-100">
     {{! set vh-100 to have the footer in the end of the page }}
 
-    <nav
-      class="navbar sticky-top navbar-expand-lg navbar-dark"
-      style="background-color: #1c8e8e"
+    <nav style="height: 30;"
+      class="navbar fixed-top navbar-expand-lg navbar-dark"
+      style="background-color: black"
     >
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/">WHAT A WATERFALL WORLD</a>
+      <div class="container-fluid nav-bar-shadow" style="background-color: white" >
+        <a class="navbar-brand" href="/"><p class="nav-bar-text"></p> 
+         <img src="../images/logo-no-background.png" width="150" height="100">
+        </a>
         <button
           class="navbar-toggler"
           type="button"
@@ -40,17 +42,18 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-link" href="/waterfalls">Explore Waterfalls</a>
-            <a class="nav-link" href="/waterfall/create">Add Waterfall</a>
-            <a class="nav-link" href="/overview">Map Overview</a>
+            <a class="nav-link" href="/waterfalls"><p class="nav-bar-text-two">Explore Waterfalls</p></a>
+            <a class="nav-link" href="/waterfall/create"><p class="nav-bar-text-two">Add Waterfall</p></a>
+            <a class="nav-link" href="/overview"><p class="nav-bar-text-two">Map Overview</p></a>
+
           </div>
 
-          <div class="navbar-nav ms-auto">
+          <div class="navbar-nav ms-auto nav-margin">
             {{#if currentUser}}
               <a class="nav-link" href="/auth/logout">Log out</a>
             {{else}}
-              <a class="nav-link" href="/auth/signup">Sign up</a>
-              <a class="nav-link" href="/auth/login">Log in</a>
+              <a class="nav-link" href="/auth/signup"><p class="nav-bar-text-two">Sign up</p></a>
+              <a class="nav-link" href="/auth/login"><p class="nav-bar-text-two">Log in</p></a>
             {{/if}}
           </div>
         </div>
