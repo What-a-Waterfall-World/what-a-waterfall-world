@@ -1,10 +1,11 @@
-body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
+@import url('https://fonts.googleapis.com/css2?family=Grandiflora+One&family=Quicksand&family=Raleway:ital,wght@0,300;1,100;1,200;1,400;1,500&display=swap');
 
-/* a {
-  color: ;
-} */
+
+* {
+  font-family: 'Raleway', sans-serif;
+  color: #283618;
+
+}
 
 h1 {
   color: 15px;
@@ -21,7 +22,16 @@ h1 {
 } */
 
 .title-spacing {
-margin-top: 80px;
+margin-top: 140px;
+margin-left: 50px;
+}
+
+.form-postioning {
+  position: absolute;
+  right: 0;
+  top: 140px;
+  margin-right: 50px;
+  font-size: 20px;
 }
 
 .waterfall-card {
@@ -72,19 +82,19 @@ header {
   background-color: black;
   height: 75vh;
   min-height: 25rem;
-  /* width:max-content; */
   overflow: hidden;
+  margin-top: 50px;
+  width:max-content;
+
 }
 
 header video {
   position: absolute;
   top: 50%;
   left: 50%;
-  /* left: 0; */
   min-width: 100%;
   min-height: 100%;
-  width: 100; 
-  /* width: auto; */
+  width: 100px; 
   height: auto;
   z-index: 0;
   -ms-transform: translateX(-50%) translateY(-50%);
@@ -101,7 +111,7 @@ header .container {
 
 header .overlay {
   position: absolute;
-  top: -10px;
+  top: 0px;
   left: 0;
   height: 100%;
   width: 100%;
