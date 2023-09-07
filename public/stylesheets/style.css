@@ -1,24 +1,39 @@
-* {
-  padding: 0;
-  margin: 0;
-}
-
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00ffff;
-}
+/* a {
+  color: ;
+} */
 
 h1 {
   color: 15px;
 }
 
+/* .waterfall {
+    margin: 10px;
+} */
 
-.waterfall-imgs {
+
+/* .waterfall-imgs {
   width: 200px;
   height: 200px;
+} */
+
+.title-spacing {
+margin-top: 80px;
+}
+
+.waterfall-card {
+padding-bottom: 20px;
+}
+
+.image {
+  max-height: 300px;
+  height: 300px;
+  width: 100%;
+  display: flex;
+  object-fit: cover;
 }
 
 .title-form {
@@ -27,4 +42,84 @@ h1 {
 #map {
   height: 500px;
   width: 100%;
+}
+
+.nav-bar-text{
+  color: #606C38;
+  font-size: 20px;
+}
+
+.nav-bar-text-two{
+  color: #283618;
+
+}
+
+.nav-margin{
+  margin: 10px;
+}
+
+.nav-bar-style {
+  /* height: 30px; */
+padding-top: 0px;
+}
+
+
+.nav-bar-shadow {
+  box-shadow: 0px 0px 10px #283618; 
+}
+header {
+  position: relative;
+  background-color: black;
+  height: 75vh;
+  min-height: 25rem;
+  /* width:max-content; */
+  overflow: hidden;
+}
+
+header video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* left: 0; */
+  min-width: 100%;
+  min-height: 100%;
+  width: 100; 
+  /* width: auto; */
+  height: auto;
+  z-index: 0;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+header .container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+header .overlay {
+  position: absolute;
+  top: -10px;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 0.5;
+  z-index: 1;
+}
+
+/* Media Query for devices withi coarse pointers and no hover functionality */
+
+/* This will use a fallback image instead of a video for devices that commonly do not support the HTML5 video element */
+
+@media (pointer: coarse) and (hover: none) {
+  header {
+    background: url('https://source.unsplash.com/XT5OInaElMw/1600x900') black no-repeat center center scroll;
+  }
+
+  header video {
+    display: none;
+  }
 }
