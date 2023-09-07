@@ -6,7 +6,10 @@
 
 }
 
-
+.nav-bar-margin {
+  margin-top: 150px;
+  margin-left: 50px;
+}
 /* .waterfall {
     margin: 10px;
 } */
@@ -80,7 +83,7 @@ header {
   height: 75vh;
   min-height: 25rem;
   overflow: hidden;
-  margin-top: 50px;
+  margin-top: 100px;
   width:max-content;
   width: 100%;
 
@@ -119,11 +122,11 @@ header .overlay {
 }
 
 .create-form-position {
-  position: absolute;
-  left: 0;
-  top: 150px;
-  margin-left: 50px;
-  font-size: 20px;
+  margin-left: 10px;
+}
+
+.alert-style {
+  width: 500px;
 }
 /* Media Query for devices withi coarse pointers and no hover functionality */
 
