@@ -130,10 +130,11 @@
 <h6 class="card-subtitle mb-2 text-muted">By {{this.user.username}}</h6>
 
   {{#if this.user}}
-    {{#ifEq this.user ../currentUser._id}}
+    {{#ifEq this.user._id ../currentUser._id}}
       <form action="/waterfall/{{../waterfall._id}}/reviews/{{this._id}}/delete" method="POST">
         <button class="btn btn-sm btn-danger">Delete</button>
       </form>
+
     {{/ifEq}}
   {{/if}}
     </div>
