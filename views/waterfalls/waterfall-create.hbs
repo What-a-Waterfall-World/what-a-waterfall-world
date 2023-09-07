@@ -1,4 +1,9 @@
 <div class="row">
+  {{#unless currentUser}}
+  <div class="alert alert-danger col-6 offset-3" role="alert">
+    Please log in first to contribute and add your waterfall.
+  </div>
+{{/unless}}
   <h1 class="text-center title-form">Add a waterfall</h1>
   <div class="col-6 offset-3">
     <form method="POST" action="/waterfall/create" enctype="multipart/form-data" class="needs-validation" novalidate >
@@ -119,9 +124,15 @@
         </label>
       </div>
 
-      <button type="submit" class="btn btn-success mb-3">
-        Add waterfall
-      </button>
+{{#unless currentUser}}
+  <div class="alert alert-danger" role="alert">
+    The submit button will be available when you are logged in.
+  </div>
+  {{else}}
+  <button type="submit" class="btn btn-success mb-3">
+    Add waterfall
+  </button>
+{{/unless}}
 
     </form>
 

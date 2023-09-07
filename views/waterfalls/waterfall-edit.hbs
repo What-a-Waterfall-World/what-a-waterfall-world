@@ -1,4 +1,9 @@
 <div class="row">
+    {{#unless currentUser}}
+  <div class="alert alert-danger col-6 offset-3" role="alert">
+    Please log in first to edit the details of this waterfall or to delete the entry.
+  </div>
+{{/unless}}
   <h1 class="text-center title-form">Change details of {{waterfall.name}}</h1>
   <div class="col-6 offset-3">
     <form
@@ -135,14 +140,27 @@
         </label>
       </div>
 
-      <button class="btn btn-success mb-3">
-        Save changes
-      </button>
+{{#unless currentUser}}
+  <div class="alert alert-danger" role="alert">
+    The submit- or delete button will be available when you are logged in.
+  </div>
+  {{else}}
+  <button type="submit" class="btn btn-success mb-3">
+    Save changes
+  </button>
+{{/unless}}
 
     </form>
 
+{{#unless currentUser}}
+  {{else}}
+<form id="deleteForm" action="/waterfall/{{waterfall._id}}/delete" method="POST">
+    <button class="btn btn-danger mb-3" type="submit" onclick="confirmAction(event)">Delete entire waterfall</button>
+</form>
+{{/unless}}
+
     <form action="/waterfall/{{waterfall._id}}" method="GET">
-      <button class="btn btn-danger mb-3">Cancel and back to waterfall details</button>
+      <button class="btn btn-dark mb-3">Cancel and back to waterfall details</button>
     </form>
     <br />
 

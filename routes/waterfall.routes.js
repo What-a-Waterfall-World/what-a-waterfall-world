@@ -5,6 +5,9 @@ const imageUploader = require("../config/cloudinary.config");
 // ********* require fileUploader in order to use it *********
 const Review = require("../models/Review.model");
 
+const isLoggedOut = require("../middleware/isLoggedOut");
+const isLoggedIn = require("../middleware/isLoggedIn");
+
 // GET: see all waterfalls and filter waterfalls for dropdown menu
 router.get("/waterfalls", (req, res, next) => {
   const { country } = req.query;
@@ -31,6 +34,11 @@ router.get("/waterfalls", (req, res, next) => {
     });
 });
 
+// GET: redirect user to welcome page after logging in
+router.get("/welcome/:username", isLoggedIn, (req, res) => {
+  res.render("auth/welcome", { username: req.params.username });
+});
+
 // GET: display form to create new waterfall
 router.get("/waterfall/create", (req, res, next) => {
   Waterfall.find()
@@ -43,18 +51,10 @@ router.get("/waterfall/create", (req, res, next) => {
     });
 });
 
-
-// GET: redirect user to welcome page after logging in
-router.get("/welcome/:username", (req, res) => {
-  console.log("what is this -----------------------------", req.params.username)
-  res.render("auth/welcome", { username: req.params.username });
-});
-
-
 // POST: process form to create new waterfall
 router.post(
   "/waterfall/create",
-  imageUploader.single("waterfall-image"),
+  imageUploader.single("waterfall-image"), isLoggedIn, 
   (req, res, next) => {
     //imageUploader.single() is the middleware function we need to upload the picture. Name 'waterfall-image' is same name as in waterfall-create.hbs file
     const { name, postalCode, country, city, transportation, lat, lng } = req.body;
@@ -96,7 +96,7 @@ router.get("/waterfall/:waterfallId/edit", async (req, res, next) => {
 // POST: process edited waterfall data & redirect to updated details page
 router.post(
   "/waterfall/:waterfallId/edit",
-  imageUploader.single("waterfall-image"),
+  imageUploader.single("waterfall-image"),isLoggedIn, 
   async (req, res, next) => {
     const { waterfallId } = req.params;
     const { name, postalCode, country, city, transportation, existingImage } =
@@ -128,7 +128,7 @@ router.post(
 );
 
 // POST: delete waterfall
-router.post("/waterfall/:waterfallId/delete", (req, res, next) => {
+router.post("/waterfall/:waterfallId/delete", isLoggedIn, (req, res, next) => {
   const { waterfallId } = req.params;
 
   Waterfall.findByIdAndDelete(waterfallId)
