@@ -14,7 +14,8 @@ const waterfalls = [
      location: {
       type: "Point",
       coordinates: [45.8337547, 6.2255572],
-    }
+    },
+    userDetails: "64fa1e0ff69c01f674daf554"
    
 },
     {
@@ -27,7 +28,8 @@ const waterfalls = [
      location: {
       type: "Point",
       coordinates: [46.5942, 7.9090],
-    }
+    },
+    userDetails: "64fa1e0ff69c01f674daf554"
 },
     {
     name: `Cascate Nardis`,
@@ -39,7 +41,8 @@ const waterfalls = [
      location: {
       type: "Point",
       coordinates: [46.3014, 10.9822],
-    }
+    },
+    userDetails: "64fa1e0ff69c01f674daf554"
 },
     {
     name: ` Krimml Waterfall`,
@@ -51,7 +54,8 @@ const waterfalls = [
     location: {
       type: "Point",
       coordinates: [47.2127, 12.1839],
-    }
+    },
+    userDetails: "64fa1e0ff69c01f674daf554"
 },
     {
     name: `Štrbački buk`,
@@ -63,7 +67,8 @@ const waterfalls = [
     location: {
       type: "Point",
       coordinates: [44.656107, 16.00729]
-    }
+    },
+    userDetails: "64fa1e0ff69c01f674daf554"
 },
     {
     name: `Krka National Park`,
@@ -75,7 +80,8 @@ const waterfalls = [
     location: {
       type: "Point",
       coordinates: [43.8666055, 15.9699089]
-  }
+  },
+  userDetails: "64fa1e0ff69c01f674daf554"
 },
 ]
 

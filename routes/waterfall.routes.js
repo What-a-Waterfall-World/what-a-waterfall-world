@@ -2,8 +2,6 @@ const router = require("express").Router();
 const Waterfall = require("../models/Waterfall.model");
 // ********* require fileUploader in order to use it *********
 const imageUploader = require("../config/cloudinary.config");
-// ********* require fileUploader in order to use it *********
-// const Review = require("../models/Review.model");
 
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
@@ -20,13 +18,13 @@ router.get("/waterfalls", (req, res, next) => {
   Waterfall.find(filter)
     .then((allWaterfalls) => {
       return Waterfall.distinct("country") // distinct = get all unique values in a array (this is a Mongoose function)
-      .then((countries) => {
-        res.render("waterfalls/waterfalls-list", {
-          waterfalls: allWaterfalls,
-          countries,
-          country,
+        .then((countries) => {
+          res.render("waterfalls/waterfalls-list", {
+            waterfalls: allWaterfalls,
+            countries,
+            country,
+          });
         });
-      });
     })
     .catch((e) => {
       console.log("Error getting waterfalls data from DB", e);
@@ -54,10 +52,12 @@ router.get("/waterfall/create", (req, res, next) => {
 // POST: process form to create new waterfall
 router.post(
   "/waterfall/create",
-  imageUploader.single("waterfall-image"), isLoggedIn, 
+  imageUploader.single("waterfall-image"),
+  isLoggedIn,
   (req, res, next) => {
     //imageUploader.single() is the middleware function we need to upload the picture. Name 'waterfall-image' is same name as in waterfall-create.hbs file
-    const { name, postalCode, country, city, transportation, lat, lng } = req.body;
+    const { name, postalCode, country, city, transportation, lat, lng } =
+      req.body;
 
     Waterfall.create({
       name,
@@ -65,8 +65,8 @@ router.post(
       country,
       city,
       transportation,
-      imageUrl: req.file.path, //fix when no image
-      location: {coordinates: [lat, lng]},
+      imageUrl: req.file.path,
+      location: { coordinates: [lat, lng] },
     })
       .then((newWaterfall) => {
         res.redirect("/waterfalls");
@@ -96,7 +96,8 @@ router.get("/waterfall/:waterfallId/edit", async (req, res, next) => {
 // POST: process edited waterfall data & redirect to updated details page
 router.post(
   "/waterfall/:waterfallId/edit",
-  imageUploader.single("waterfall-image"),isLoggedIn, 
+  imageUploader.single("waterfall-image"),
+  isLoggedIn,
   async (req, res, next) => {
     const { waterfallId } = req.params;
     const { name, postalCode, country, city, transportation, existingImage } =
@@ -140,40 +141,30 @@ router.post("/waterfall/:waterfallId/delete", isLoggedIn, (req, res, next) => {
 });
 
 // GET: display details of a waterfall
-router.get("/waterfall/:waterfallId", (req, res, next) => {
+router.get("/waterfall/:waterfallId", async (req, res, next) => {
   const waterfallId = req.params.waterfallId;
-  const mapsApiKey = process.env.GOOGLE_MAPS_KEY
-  Waterfall.findById(waterfallId)
-  .then((waterfallFromDB) => {
-    res.render("waterfalls/waterfall-details", {
-      waterfall: waterfallFromDB,
-      mapsApiKey: mapsApiKey
-    });
-  })
-  .catch((e) => {
-    console.log("Error getting waterfall details from DB", e);
-    next(e);
-  });
+  const mapsApiKey = process.env.GOOGLE_MAPS_KEY;
+
+  try {
+      const waterfallWithReviews = await Waterfall.findById(waterfallId).populate("reviews").populate("userDetails");
+      res.render("waterfalls/waterfall-details", {
+          waterfall: waterfallWithReviews,
+          mapsApiKey: mapsApiKey,
+      });
+  } catch (e) {
+      console.log("Error getting waterfall details from DB", e);
+      next(e);
+  }
 });
 
-// POST: to add the review to the waterfall
-router.post("/waterfall/:waterfallId/review", async (req, res, next) => {
-  const waterfall = await Waterfall.findById(req.params.waterfallId)
-  const review = new Review(req.body.review)
-  waterfall.reviews.push(review);
-  await review.save();
-  await waterfall.save();
-  res.redirect(`/waterfall/${waterfall._id}`);
-}
-)
-
+// GET: find waterfalls for Google Maps
 router.get("/overview", (req, res, next) => {
-  const mapsApiKey = process.env.GOOGLE_MAPS_KEY
+  const mapsApiKey = process.env.GOOGLE_MAPS_KEY;
   Waterfall.find()
     .then((waterfallsFromDB) => {
       res.render("waterfalls/map-overview", {
         waterfalls: JSON.stringify(waterfallsFromDB),
-        mapsApiKey: mapsApiKey
+        mapsApiKey: mapsApiKey,
       });
     })
     .catch((e) => {

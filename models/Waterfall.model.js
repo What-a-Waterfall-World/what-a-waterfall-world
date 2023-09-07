@@ -1,4 +1,6 @@
 const { Schema, model } = require("mongoose");
+const Review = require("./Review.model");
+const User = require("./User.model");
 
 const waterfallSchema = new Schema(
   {
@@ -27,16 +29,27 @@ const waterfallSchema = new Schema(
       required: false,
     },
     location: {
-        type: {
-            type: String,
-            enum: ['Point'],
-            // required: true,
+      type: {
+        type: String,
+        enum: ["Point"],
+        // required: true,
+      },
+      coordinates: {
+        type: [Number],
+        // required: true,
+      },
     },
-        coordinates: {
-            type: [Number],
-            // required: true,
-    }
-}
+    userDetails: {
+      type: Schema.Types.ObjectId,
+      ref: "User"
+    },
+    reviews: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Review",
+      }
+    ],
+
     // userId: {
     //     type: Schema.Types.ObjectId,
     //     ref: "User"

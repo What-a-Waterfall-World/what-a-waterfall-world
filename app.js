@@ -33,10 +33,21 @@ app.use("/auth", authRoutes);
 const waterfallRoutes = require("./routes/waterfall.routes");
 app.use("/", waterfallRoutes);
 
+const reviewRoutes = require("./routes/review.routes");
+app.use("/", reviewRoutes);
+
 // Handlebar helper for filter function in all-waterfalls-list:
 hbs.registerHelper('eq', function(a, b) {
-    return a === b;
-  });
+  return a === b;
+});
+
+// Handlebar helper for check if logged in user is same as the one that created the waterfall or review:
+hbs.registerHelper('ifEq', function (a, b, options) {
+    if (a == b) {
+        return options.fn(this);
+    }
+    return options.inverse(this);
+});
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);

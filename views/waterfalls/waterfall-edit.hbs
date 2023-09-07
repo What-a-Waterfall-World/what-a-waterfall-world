@@ -1,20 +1,22 @@
 <div class="row">
-    {{#unless currentUser}}
-  <div class="alert alert-danger col-6 offset-3" role="alert">
-    Please log in first to edit the details of this waterfall or to delete the entry.
-  </div>
-{{/unless}}
+  {{#unless currentUser}}
+    <div class="alert alert-danger col-6 offset-3" role="alert">
+      Please log in first to edit the details of this waterfall or to delete your
+      contribution.
+    </div>
+  {{/unless}}
   <h1 class="text-center title-form">Change details of {{waterfall.name}}</h1>
   <div class="col-6 offset-3">
     <form
       method="POST"
       action="/waterfall/{{waterfall._id}}/edit"
       enctype="multipart/form-data"
-      class="needs-validation" novalidate 
+      class="needs-validation"
+      novalidate
     >
 
       <div class="mb-3">
-      <label class="form-label" for="name-edit">
+        <label class="form-label" for="name-edit">
           Name Waterfall:
           <input
             class="form-control"
@@ -26,8 +28,8 @@
             value="{{waterfall.name}}"
           />
           <div class="invalid-feedback">
-        Please enter the name of the waterfall
-      </div>
+            Please enter the name of the waterfall
+          </div>
         </label>
       </div>
 
@@ -43,14 +45,14 @@
             required
             value="{{waterfall.country}}"
           />
-            <div class="invalid-feedback">
-        Please enter the country where the waterfall is located
-      </div>
+          <div class="invalid-feedback">
+            Please enter the country where the waterfall is located
+          </div>
         </label>
       </div>
 
       <div class="mb-3">
-<label class="form-label" for="city-edit">
+        <label class="form-label" for="city-edit">
           City:
           <input
             class="form-control"
@@ -61,14 +63,14 @@
             required
             value="{{waterfall.city}}"
           />
-           <div class="invalid-feedback">
-        Please enter the city where the waterfall is located
-      </div>
+          <div class="invalid-feedback">
+            Please enter the city where the waterfall is located
+          </div>
         </label>
       </div>
 
       <div class="mb-3">
-         <label class="form-label" for="postal-edit">
+        <label class="form-label" for="postal-edit">
           Postal code:
           <input
             class="form-control"
@@ -81,11 +83,11 @@
         </label>
       </div>
 
-       <div class="mb-3"> 
+      <div class="mb-3">
         <label class="form-label" for="latitude-edit">
           Latitude:
           <input
-            class="form-control" 
+            class="form-control"
             type="text"
             name="lat"
             placeholder="Latitude"
@@ -94,11 +96,11 @@
         </label>
       </div>
 
-      <div class="mb-3"> 
+      <div class="mb-3">
         <label class="form-label" for="longitude-edit">
           Longitude:
           <input
-            class="form-control" 
+            class="form-control"
             type="text"
             name="lng"
             placeholder="Longitude"
@@ -108,7 +110,7 @@
       </div>
 
       <div class="mb-3">
- <label class="form-label" for="transport-edit">
+        <label class="form-label" for="transport-edit">
           How to get here:
           <textarea
             class="form-control"
@@ -117,7 +119,7 @@
             type="text"
             name="transportation"
             placeholder="Share your recommendations for traveling to this waterfall"
-            id="transport-edit"  
+            id="transport-edit"
             value="{{waterfall.transportation}}"
           ></textarea>
         </label>
@@ -126,11 +128,7 @@
       {{! ********* IMAGE UPLOAD: *********}}
       <div class="form-group mb-3">
         <label class="form-label">Change existing image:
-          <input
-            class="form-control"
-            type="file"
-            name="waterfall-image"
-          />
+          <input class="form-control" type="file" name="waterfall-image" />
           <input
             type="text"
             name="existingImage"
@@ -140,24 +138,31 @@
         </label>
       </div>
 
-{{#unless currentUser}}
-  <div class="alert alert-danger" role="alert">
-    The submit- or delete button will be available when you are logged in.
-  </div>
-  {{else}}
-  <button type="submit" class="btn btn-success mb-3">
-    Save changes
-  </button>
-{{/unless}}
+      {{#unless currentUser}}
+        <div class="alert alert-danger" role="alert">
+          The submit- or delete button will be available when you are logged in.
+        </div>
+      {{else}}
+        <button type="submit" class="btn btn-success mb-3">
+          Save changes
+        </button>
+      {{/unless}}
 
     </form>
 
-{{#unless currentUser}}
-  {{else}}
-<form id="deleteForm" action="/waterfall/{{waterfall._id}}/delete" method="POST">
-    <button class="btn btn-danger mb-3" type="submit" onclick="confirmAction(event)">Delete entire waterfall</button>
-</form>
-{{/unless}}
+    {{#unless currentUser}}{{else}}
+      <form
+        id="deleteForm"
+        action="/waterfall/{{waterfall._id}}/delete"
+        method="POST"
+      >
+        <button
+          class="btn btn-danger mb-3"
+          type="submit"
+          onclick="confirmAction(event)"
+        >Delete entire waterfall</button>
+      </form>
+    {{/unless}}
 
     <form action="/waterfall/{{waterfall._id}}" method="GET">
       <button class="btn btn-dark mb-3">Cancel and back to waterfall details</button>
@@ -168,3 +173,17 @@
 
   </div>
 </div>
+
+{{! ***** ADD CONFIRMATION ALERT BEFORE DELETING A WATERFALL *****}}
+<script>
+    const confirmAction = (event) => {
+    // Disable form submission
+    event.preventDefault()
+
+    const confirmed = confirm("Are you sure you want to delete it?");
+
+    // Delete waterfall when Ok is clicked
+    if(confirmed)
+        document.getElementById("deleteForm").submit()
+}
+</script>

@@ -1,39 +1,29 @@
+{{! ***** DETAIL INFORMATION ABOUT THE WATERFALL *****}}
 <h1>{{waterfall.name}}</h1>
 
 <img class="waterfall-imgs" src="{{waterfall.imageUrl}}" alt="picture of {{waterfall.name}}">
 
-<h3>Postal code:</h3>
-<p>{{waterfall.postalCode}}</p>
+<h3>country:</h3>
+<p>{{waterfall.country}}</p>
 
 <h3>City:</h3>
 <p>{{waterfall.city}}</p>
 
-<h3>country:</h3>
-<p>{{waterfall.country}}</p>
+<h3>Postal code:</h3>
+<p>{{waterfall.postalCode}}</p>
 
 <h3>How to get to the waterfall:</h3>
 <p>{{waterfall.transportation}}</p>
+
 
 <form action="/waterfall/{{waterfall._id}}/edit" method="GET">
   <button>Edit</button>
 </form>
 
-{{!-- Add confirmation alert before delete a waterfall --}}
-<script>
-    const confirmAction = (event) => {
-    // Disable form submission
-    event.preventDefault()
-
-    const confirmed = confirm("Are you sure you want to delete it?");
-
-    // Delete waterfall when Ok is clicked
-    if(confirmed)
-        document.getElementById("deleteForm").submit()
-}
-</script>
-
 <a href="/waterfalls">All waterfalls</a>
 
+
+{{! ***** SHOW WATERFALL ON GOOGLE MAPS *****}}
 <div id="map"></div>
  <script src="https://maps.googleapis.com/maps/api/js?key={{mapsApiKey}}">
 </script>
@@ -56,12 +46,103 @@
         title: `${{{waterfall.name}}}`
       });
   }
-
   startMap({{waterfall.location.coordinates.[0]}}, {{waterfall.location.coordinates.[1]}});
-
-
 </script>
 
+
+
+{{! ***** LEAVE A REVIEW *****}}
+<div class="col-6 mb-3">
+  <h2>Leave a review for this waterfall</h2>
+  <form
+    action="/waterfall/{{waterfall._id}}/reviews"
+    method="post"
+    class="mb-3 needs-validation"
+    enctype="multipart/form-data"
+    novalidate
+  >
+
+<fieldset class="starability-basic">
+  <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
+  <input type="radio" id="second-rate1" name="rating" value="1" />
+  <label for="second-rate1" title="Terrible">1 star</label>
+  <input type="radio" id="second-rate2" name="rating" value="2" />
+  <label for="second-rate2" title="Not good">2 stars</label>
+  <input type="radio" id="second-rate3" name="rating" value="3" />
+  <label for="second-rate3" title="Average">3 stars</label>
+  <input type="radio" id="second-rate4" name="rating" value="4" />
+  <label for="second-rate4" title="Very good">4 stars</label>
+  <input type="radio" id="second-rate5" name="rating" value="5" />
+  <label for="second-rate5" title="Amazing">5 stars</label>
+</fieldset>
+
+    <div class="mb-3">
+      <label class="form-label" for="body">
+        Write a review
+        <textarea
+          class="form-control"
+          name="body"
+          id="body"
+          cols="50"
+          rows="5"
+          required
+        ></textarea>
+        <div class="invalid-feedback">
+          Please tell us more about your visit to this waterfall
+        </div>
+
+      <div class="mb-3">
+        <label for="waterfall-review-image" class="form-label">Upload your image:
+          <input
+            class="form-control"
+            type="file"
+            name="waterfall-review-image"
+            id="waterfall-review-image"
+          />
+        </label>
+      </div>
+
+      </label>
+      {{#unless currentUser}}
+        <div class="alert alert-danger" role="alert">
+    Please log in to leave a review.
+  </div>
+   {{else}}
+    </div>
+    <button class="btn btn-success">Submit review</button>
+{{/unless}}
+  </form>
+</div>
+
+
+{{! ***** SHOW PREVIOUS REVIEWS *****}}
+{{#each waterfall.reviews}}
+  <div class="card mb-3">
+    <div class="card-body">
+      <p class="starability-result" data-rating="{{this.rating}}">
+                    Rated: {{this.rating}} stars
+                </p>
+         <h5 class="card-text">{{this.body}}</h5>
+              {{#if this.imageUrl}}
+        <img class="mb-3" src="{{this.imageUrl}}" alt="Review image" width="200">
+      {{/if}}
+
+  <h6 class="card-subtitle mb-2 text-muted">By {{../waterfall.userDetails.username}}</h6>
+  {{log this.user ../currentUser._id}}
+  {{#if this.user}}
+    {{#ifEq this.user ../currentUser._id}}
+      <form action="/waterfall/{{../waterfall._id}}/reviews/{{this._id}}/delete" method="POST">
+        <button class="btn btn-sm btn-danger">Delete</button>
+      </form>
+    {{/ifEq}}
+  {{/if}}
+    </div>
+
+  </div>
+{{/each}}
+
+{{! ***** END OF PAGE *****}}
 <form class="mb-3" action="/waterfalls" method="GET">
   <button>Back to list</button>
 </form>
+
