@@ -3,7 +3,7 @@ const Waterfall = require("../models/Waterfall.model");
 // ********* require fileUploader in order to use it *********
 const imageUploader = require("../config/cloudinary.config");
 // ********* require fileUploader in order to use it *********
-const Review = require("../models/Review.model");
+// const Review = require("../models/Review.model");
 
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
