@@ -42,14 +42,16 @@ router.post("/signup", isLoggedOut, (req, res) => {
     return;
   }
 
+  
+  
   //   ! This regular expression checks password for special characters and minimum length
   /*
   const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
   if (!regex.test(password)) {
     res
-      .status(400)
-      .render("auth/signup", {
-        errorMessage: "Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter."
+    .status(400)
+    .render("auth/signup", {
+      errorMessage: "Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter."
     });
     return;
   }
@@ -64,7 +66,9 @@ router.post("/signup", isLoggedOut, (req, res) => {
       return User.create({ username, email, password: hashedPassword });
     })
     .then((user) => {
-      res.redirect("/auth/login");
+      req.session.currentUser = user.toObject();
+      delete req.session.currentUser.password; 
+      res.redirect(`/welcome/${user.username}`);
     })
     .catch((error) => {
       if (error instanceof mongoose.Error.ValidationError) {
