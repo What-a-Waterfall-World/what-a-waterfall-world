@@ -1,0 +1,8 @@
+{{#if currentUser}}
+  <h1>
+    Welcome,
+    {{username}}!
+  </h1>
+{{else}}
+  Please <a href="/auth/login">log in</a> or <a href="/auth/signup">register</a> first to access this page.
+{{/if}}

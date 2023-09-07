@@ -43,11 +43,15 @@
             <a class="nav-link" href="/waterfalls">Explore Waterfalls</a>
             <a class="nav-link" href="/waterfall/create">Add Waterfall</a>
             <a class="nav-link" href="/overview">Map Overview</a>
-
           </div>
+
           <div class="navbar-nav ms-auto">
-            <a class="nav-link" href="/auth/signup">Sign up</a>
-            <a class="nav-link" href="/auth/login">Log in</a>
+            {{#if currentUser}}
+              <a class="nav-link" href="/auth/logout">Log out</a>
+            {{else}}
+              <a class="nav-link" href="/auth/signup">Sign up</a>
+              <a class="nav-link" href="/auth/login">Log in</a>
+            {{/if}}
           </div>
         </div>
       </div>
@@ -65,12 +69,12 @@
     ></script>
     <script src="/js/script.js"></script>
 
-  <footer class="footer bg-light py-3 mt-auto">
-    <div class="container">
-      <span class="text-muted">&copy; What a Waterfall World 2023 - by Merna
-        Wahdan & Kim Idsinga</span>
-    </div>
-  </footer>
+    <footer class="footer bg-light py-3 mt-auto">
+      <div class="container">
+        <span class="text-muted">&copy; What a Waterfall World 2023 - by Merna
+          Wahdan & Kim Idsinga</span>
+      </div>
+    </footer>
 
   </body>
 </html>

@@ -2,6 +2,8 @@ const router = require("express").Router();
 const Waterfall = require("../models/Waterfall.model");
 // ********* require fileUploader in order to use it *********
 const imageUploader = require("../config/cloudinary.config");
+// ********* require fileUploader in order to use it *********
+const Review = require("../models/Review.model");
 
 // GET: see all waterfalls and filter waterfalls for dropdown menu
 router.get("/waterfalls", (req, res, next) => {
@@ -40,6 +42,14 @@ router.get("/waterfall/create", (req, res, next) => {
       next(e);
     });
 });
+
+
+// GET: redirect user to welcome page after logging in
+router.get("/welcome/:username", (req, res) => {
+  console.log("what is this -----------------------------", req.params.username)
+  res.render("auth/welcome", { username: req.params.username });
+});
+
 
 // POST: process form to create new waterfall
 router.post(
@@ -134,17 +144,28 @@ router.get("/waterfall/:waterfallId", (req, res, next) => {
   const waterfallId = req.params.waterfallId;
   const mapsApiKey = process.env.GOOGLE_MAPS_KEY
   Waterfall.findById(waterfallId)
-    .then((waterfallFromDB) => {
-      res.render("waterfalls/waterfall-details", {
-        waterfall: waterfallFromDB,
-        mapsApiKey: mapsApiKey
-      });
-    })
-    .catch((e) => {
-      console.log("Error getting waterfall details from DB", e);
-      next(e);
+  .then((waterfallFromDB) => {
+    res.render("waterfalls/waterfall-details", {
+      waterfall: waterfallFromDB,
+      mapsApiKey: mapsApiKey
     });
+  })
+  .catch((e) => {
+    console.log("Error getting waterfall details from DB", e);
+    next(e);
+  });
 });
+
+// POST: to add the review to the waterfall
+router.post("/waterfall/:waterfallId/review", async (req, res, next) => {
+  const waterfall = await Waterfall.findById(req.params.waterfallId)
+  const review = new Review(req.body.review)
+  waterfall.reviews.push(review);
+  await review.save();
+  await waterfall.save();
+  res.redirect(`/waterfall/${waterfall._id}`);
+}
+)
 
 router.get("/overview", (req, res, next) => {
   const mapsApiKey = process.env.GOOGLE_MAPS_KEY
@@ -160,6 +181,5 @@ router.get("/overview", (req, res, next) => {
       next(e);
     });
 });
-
 
 module.exports = router;
