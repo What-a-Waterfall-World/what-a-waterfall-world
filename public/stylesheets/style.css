@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Grandiflora+One&family=Quicksand&family=Raleway:ital,wght@0,300;1,100;1,200;1,400;1,500&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Grandiflora+One&family=Quicksand&family=Raleway:ital,wght@0,300;1,100;1,200;1,400;1,500&display=swap');
 
 * {
   font-family: 'Raleway', sans-serif;
@@ -7,9 +6,6 @@
 
 }
 
-h1 {
-  color: 15px;
-}
 
 /* .waterfall {
     margin: 10px;
@@ -24,12 +20,13 @@ h1 {
 .title-spacing {
 margin-top: 140px;
 margin-left: 50px;
+padding-bottom: 20px;
 }
 
-.form-postioning {
+.filter-postioning {
   position: absolute;
   right: 0;
-  top: 140px;
+  top: 150px;
   margin-right: 50px;
   font-size: 20px;
 }
@@ -121,6 +118,13 @@ header .overlay {
   z-index: 1;
 }
 
+.create-form-position {
+  position: absolute;
+  left: 0;
+  top: 150px;
+  margin-left: 50px;
+  font-size: 20px;
+}
 /* Media Query for devices withi coarse pointers and no hover functionality */
 
 /* This will use a fallback image instead of a video for devices that commonly do not support the HTML5 video element */
