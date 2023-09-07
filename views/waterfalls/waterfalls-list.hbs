@@ -18,14 +18,16 @@
         Filter by country:     </label>
         <select name="country" id="country-select">
               <option value="">See All</option>
+
                 {{#each countries}}
-              <option value="{{this}}" {{#if (eq this country)}}selected{{/if}}>{{this}}</option>
+                  <option value="{{this}}" {{#if (eq this ../country)}}selected{{/if}}>{{this}}</option>
                 {{/each}}
         </select>
         <button type="submit" class="btn btn-secondary" >search</button>
   </form>
-  </div>
+
 </div>
+
 
 
 
