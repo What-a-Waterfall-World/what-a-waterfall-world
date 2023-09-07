@@ -67,6 +67,7 @@ router.post(
       transportation,
       imageUrl: req.file.path,
       location: { coordinates: [lat, lng] },
+      userDetails: req.session.currentUser._id,
     })
       .then((newWaterfall) => {
         res.redirect("/waterfalls");
