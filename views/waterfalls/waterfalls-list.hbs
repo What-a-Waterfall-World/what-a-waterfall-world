@@ -1,34 +1,58 @@
 {{!****** show waterfalls based on search ******}}
-{{#if country}}
-<h1>Waterfalls in {{country}}</h1>
-{{else}}
-<h1>All Waterfalls</h1>
-{{/if}}
+<div style="width: 100%;">
+<div class="title-spacing">
+  {{#if country}}
+  <h1>Waterfalls in {{country}}</h1>
+  {{else}}
+  <h1>Explore Waterfalls</h1>
+  {{/if}}
+
+</div>
 
 {{!****** Filter waterfalls ******}}
-<form action="/waterfalls" method="GET">
-    <label for="country-select">
-       Filter by country:     </label>
-      <select name="country" id="country-select">
-            <option value="">See All</option>
-              {{#each countries}}
-            <option value="{{this}}" {{#if (eq this country)}}selected{{/if}}>{{this}}</option>
-              {{/each}}
-      </select>
-       <button type="submit">search</button>
-</form>
+
+<div class="form-postioning">
+
+  <form action="/waterfalls" method="GET">
+      <label for="country-select">
+        Filter by country:     </label>
+        <select name="country" id="country-select">
+              <option value="">See All</option>
+                {{#each countries}}
+              <option value="{{this}}" {{#if (eq this country)}}selected{{/if}}>{{this}}</option>
+                {{/each}}
+        </select>
+        <button type="submit" class="btn btn-secondary" >search</button>
+  </form>
+  </div>
+</div>
+
+
+
 
 {{!****** Display list of waterfalls ******}}
-{{#each waterfalls}}
-  <div>
-    <h3>{{name}}</h3>
-    <img class="waterfall-imgs" src="{{imageUrl}}" alt="waterfall image" />
-   
-    <p>{{country}}</p>
+<div class="container">
+    <div class="row">
 
-    <form action="/waterfall/{{_id}}" method="GET">
-      <button>See details</button>
-    </form>
+  {{#each waterfalls}}
+      <div class="col-md-4 waterfall-card">
+        <div class="card">
 
-  </div>
-{{/each}}
+        <form action="/waterfall/{{_id}}" method="GET">
+          <img class="image" alt="waterfall image" src="{{imageUrl}}"/>
+        </form>
+        
+        <div class="card-body">
+        <h5>{{name}}</h5>
+        <p "card-text">📍 {{country}}</p>
+          
+          <form action="/waterfall/{{_id}}" method="GET">
+            <button>See details</button>
+          </form>
+        </div>
+      </div> 
+      </div>
+ 
+  {{/each}}
+</div>
+      <div>

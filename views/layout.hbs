@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>What a Waterfall World</title>
-    <link rel="shortcut icon" href="./images/favicon.png" />
+    <link rel="shortcut icon" href="../images/favicon-2.png" />
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <link rel="stylesheet" type="text/css" href="/stylesheets/stars.css" />
 
@@ -23,11 +23,12 @@
     {{! set vh-100 to have the footer in the end of the page }}
 
     <nav
-      class="navbar sticky-top navbar-expand-lg navbar-dark"
-      style="background-color: #1c8e8e"
+      class="navbar fixed-top navbar-expand-lg nav-bar-style" style="padding-top: 0"
     >
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/">WHAT A WATERFALL WORLD</a>
+      <div class="container-fluid nav-bar-shadow" style="background-color: white" >
+        <a class="navbar-brand" href="/"><p class="nav-bar-text"></p> 
+         <img src="../images/logo-no-background.png" width="150" height="80">
+        </a>
         <button
           class="navbar-toggler"
           type="button"
@@ -41,28 +42,28 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-link" href="/waterfalls">Explore Waterfalls</a>
-            <a class="nav-link" href="/waterfall/create">Add Waterfall</a>
-            <a class="nav-link" href="/overview">Map Overview</a>
+            <a class="nav-link" href="/waterfalls"><h5 class="nav-bar-text-two">Explore</h5></a>
+            <a class="nav-link" href="/waterfall/create"><h5 class="nav-bar-text-two">Add Waterfall</h5></a>
+            <a class="nav-link" href="/overview"><h5 class="nav-bar-text-two">Overview</h5></a>
+
           </div>
 
-          <div class="navbar-nav ms-auto">
+          <div class="navbar-nav ms-auto nav-margin">
             {{#if currentUser}}
-              <a class="nav-link" href="/auth/logout">Log out</a>
+              <a class="nav-link" href="/auth/logout"><h5 class="nav-bar-text-two">Log out</h5></a>
             {{else}}
-              <a class="nav-link" href="/auth/signup">Sign up</a>
-              <a class="nav-link" href="/auth/login">Log in</a>
+              <a class="nav-link" href="/auth/signup"><h5 class="nav-bar-text-two">Sign up</h5></a>
+              <a class="nav-link" href="/auth/login"><h5 class="nav-bar-text-two">Log in</h5></a>
             {{/if}}
           </div>
         </div>
       </div>
     </nav>
 
-    <main class="container mt-5">
+    {{!-- <main class="container mt-5"> --}}
       {{!margin-top set to 5}}
       {{{body}}}
-
-    </main>
+    {{!-- </main> --}}
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
