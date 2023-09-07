@@ -49,11 +49,6 @@ const waterfallSchema = new Schema(
         ref: "Review",
       }
     ],
-
-    // userId: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: "User"
-    // }
   },
   {
     timestamps: true,

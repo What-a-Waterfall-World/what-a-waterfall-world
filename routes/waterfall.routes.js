@@ -146,7 +146,16 @@ router.get("/waterfall/:waterfallId", async (req, res, next) => {
   const mapsApiKey = process.env.GOOGLE_MAPS_KEY;
 
   try {
-      const waterfallWithReviews = await Waterfall.findById(waterfallId).populate("reviews").populate("userDetails");
+      const waterfallWithReviews = await Waterfall.findById(waterfallId)
+        .populate({
+            path: 'reviews',
+            populate: {
+                path: 'user',
+                model: 'User'
+            }
+        })
+        .populate("userDetails");
+
       res.render("waterfalls/waterfall-details", {
           waterfall: waterfallWithReviews,
           mapsApiKey: mapsApiKey,

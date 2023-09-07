@@ -127,8 +127,8 @@
         <img class="mb-3" src="{{this.imageUrl}}" alt="Review image" width="200">
       {{/if}}
 
-  <h6 class="card-subtitle mb-2 text-muted">By {{../waterfall.userDetails.username}}</h6>
-  {{log this.user ../currentUser._id}}
+<h6 class="card-subtitle mb-2 text-muted">By {{this.user.username}}</h6>
+
   {{#if this.user}}
     {{#ifEq this.user ../currentUser._id}}
       <form action="/waterfall/{{../waterfall._id}}/reviews/{{this._id}}/delete" method="POST">
