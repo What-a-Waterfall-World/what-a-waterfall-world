@@ -1,8 +1,32 @@
 {{#if currentUser}}
   <h1>
-    Welcome,
-    {{username}}!
+    Welcome, {{username}}!
   </h1>
+  <p></p>
+
+<header class="header" id="welcome-page">
+  <div class="overlay"></div>
+
+<div class="video-spacing">
+  <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+    <source src="../videos/waterfall-login.mp4" type="video/mp4">
+  </video>
+</div>
+
+  <div class="container h-100">
+    <div class="d-flex h-100 text-center align-items-center">
+      <div class="w-100">
+        <h2 class="display-3 text-white">Welcome, <span style="font-family: 'Cedarville Cursive', cursive; color: white">{{username}}</span></h2>
+        <br>
+        <p class="lead mb-3 text-white">Got a nature wonder to share? Start contributing now!</p>
+          <form action="/waterfalls" method="GET">
+      <label for="eadd-waterfall">
+        <button type="submit" class="btn btn-secondary" id="add-waterfall">Add Waterfall</button>
+  </form>
+      </div>
+    </div>
+  </div>
+</header>
 {{else}}
   Please <a href="/auth/login">log in</a> or <a href="/auth/signup">register</a> first to access this page.
 {{/if}}
