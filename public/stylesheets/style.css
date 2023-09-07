@@ -140,6 +140,10 @@ header .overlay {
 
 }
 
+/* to not make the name in the corner like it should be a clickable page, no link attached */
+#no-hover {
+  cursor: default;
+}
 
 
 
@@ -163,3 +167,4 @@ select {
   width: 200px;
   padding: 2px;
 }
+
