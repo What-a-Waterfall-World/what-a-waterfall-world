@@ -1,11 +1,13 @@
-<div class="nav-bar-margin row">
+<div class="row">
+  <div id="create-waterfall">
+
   {{#unless currentUser}}
-  <div class="alert alert-danger alert-style" role="alert">
+  <div class="alert alert-danger" role="alert" style="width: 498;">
     Please log in first to contribute and add your waterfall.
   </div>
 {{/unless}}
-  <h1 class="title-form">Add a waterfall</h1>
-  <div class="col-6 offset-3" style="margin-left: 10">
+  <h1 class="title-form" style="margin-left: 30">Add a waterfall</h1>
+  <div class="col-6 offset-3" style="margin-left: 30">
     <form method="POST" action="/waterfall/create" enctype="multipart/form-data" class="needs-validation" novalidate >
       <div class="mb-3">
         <label class="form-label" for="name-add">
@@ -123,9 +125,10 @@
           />
         </label>
       </div>
+    
 
 {{#unless currentUser}}
-  <div class="alert alert-danger alert-style" role="alert">
+  <div class="alert alert-danger" role="alert">
     The submit button will be available when you are logged in.
   </div>
   {{else}}
@@ -137,5 +140,7 @@
     </form>
 
 
+
   </div>
 </div>
+ </div>
