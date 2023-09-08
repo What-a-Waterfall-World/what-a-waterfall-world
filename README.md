@@ -8,7 +8,7 @@ Instructions to Run This App on Your Computer
 To run this application on your local machine, follow these steps:
 
 1. Clone the Repository
-git clone https://github.com/your-username/what-a-waterfall-world.git
+git clone https://github.com/What-a-Waterfall-World/what-a-waterfall-world
 2. Install Dependencies
 Navigate to the project directory and install the required dependencies using npm:
 
