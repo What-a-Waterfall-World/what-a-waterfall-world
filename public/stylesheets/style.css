@@ -183,6 +183,10 @@ header .overlay {
   margin-top: 80; 
 }
 
+#no-hover {
+  cursor: default;
+}
+
 
 /* Media Query for devices withi coarse pointers and no hover functionality */
 
