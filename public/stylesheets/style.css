@@ -15,10 +15,11 @@
 } */
 
 
-/* .waterfall-imgs {
-  width: 200px;
-  height: 200px;
-} */
+.waterfall-imgs {
+  width: 400px;
+  height: 400px;
+  margin-bottom: 20px;
+}
 
 .title-spacing {
 margin-top: 140px;
@@ -53,6 +54,7 @@ padding-bottom: 20px;
 #map {
   height: 500px;
   width: 100%;
+  margin-bottom: 20px ;
 }
 
 .nav-bar-text{
@@ -149,6 +151,13 @@ header .overlay {
 
 #login-style, #signup-style {
   margin-top: 80; 
+}
+
+.waterfall-details {
+
+  margin-top: 150px;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
 

@@ -1,23 +1,25 @@
 {{! ***** DETAIL INFORMATION ABOUT THE WATERFALL *****}}
+<div class="waterfall-details">
 <h1>{{waterfall.name}}</h1>
 
 <img class="waterfall-imgs" src="{{waterfall.imageUrl}}" alt="picture of {{waterfall.name}}">
 
-<h3>country:</h3>
-<p>{{waterfall.country}}</p>
+<h3>Country:</h3>
+<h5>📍 {{waterfall.country}}</h5>
 
 <h3>City:</h3>
-<p>{{waterfall.city}}</p>
+<h5>📍 {{waterfall.city}}</h5>
 
 <h3>Postal code:</h3>
-<p>{{waterfall.postalCode}}</p>
+<h5>📍 {{waterfall.postalCode}}</h5>
 
 <h3>How to get to the waterfall:</h3>
-<p>{{waterfall.transportation}}</p>
+<h5>{{waterfall.transportation}}</h5>
 
+<br>
 
 <form action="/waterfall/{{waterfall._id}}/edit" method="GET">
-  <button>Edit</button>
+<button type="button" class="btn btn-success">Edit</button>
 </form>
 
 {{! ***** SHOW WATERFALL ON GOOGLE MAPS *****}}
@@ -84,6 +86,7 @@
           rows="5"
           required
         ></textarea>
+        <br>
         <div class="invalid-feedback">
           Please tell us more about your visit to this waterfall
         </div>
@@ -139,8 +142,5 @@
   </div>
 {{/each}}
 
-{{! ***** END OF PAGE *****}}
-<form class="mb-3" action="/waterfalls" method="GET">
-  <button>Back to list</button>
-</form>
+</div>
 
