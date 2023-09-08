@@ -1,3 +1,5 @@
+{{! ***** IMAGE AND TITLE ON TOP *****}}
+<div class="all-details-wrapper">
 <div id="details-image-container">
     <div class="d-flex h-100 text-center align-items-center">
     <h1 class="waterfall-title position-absolute top-50 start-50 translate-middle">{{waterfall.name}}</h1>
@@ -5,37 +7,32 @@
     </div>
   </div>
 </div>
-
-
-
-
+</div>
 {{! ***** DETAIL INFORMATION ABOUT THE WATERFALL *****}}
 <div class="details-container mt-3" style="margin-left: 30">
-
-<div class="address-container">
-
-  <h4>Location:</h4>
-  <p><span class="location-icon">📍</span> {{waterfall.country}}, {{waterfall.city}}, {{waterfall.postalCode}}</p>
-  
-  <h4>How to get to the waterfall:</h4>
-  <p>{{waterfall.transportation}}</p>
-
+  <div class="address-container">
+    <h4>Location:</h4>
+    <p><span class="location-icon">📍</span> {{waterfall.country}}, {{waterfall.city}}, {{waterfall.postalCode}}</p>
+    <h4>How to get to the waterfall:</h4>
+    <p>{{waterfall.transportation}}</p>
+  </div>
 </div>
-
-
 
 <br>
 
-<form action="/waterfall/{{waterfall._id}}/edit" method="GET">
-<button class="btn btn-success">Edit</button>
+{{! ***** EDIT WATERFALL BUTTON *****}}
+<div class="details-container mt-3" style="margin-left: 30">
+  <form action="/waterfall/{{waterfall._id}}/edit" method="GET">
+  <button class="btn btn-success">Edit</button>
 </form>
+
 
 {{! ***** SHOW WATERFALL ON GOOGLE MAPS *****}}
 <div id="map"></div>
- <script src="https://maps.googleapis.com/maps/api/js?key={{mapsApiKey}}">
-</script>
+  <script src="https://maps.googleapis.com/maps/api/js?key={{mapsApiKey}}">
+  </script>
 
-<script>
+  <script>
 
    function startMap(lat, lng) {
 
@@ -54,7 +51,7 @@
       });
   }
   startMap({{waterfall.location.coordinates.[0]}}, {{waterfall.location.coordinates.[1]}});
-</script>
+  </script>
 
 
 
