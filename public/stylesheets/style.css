@@ -6,10 +6,10 @@
 
 }
 
-.nav-bar-margin {
+/* .nav-bar-margin {
   margin-top: 150px;
   margin-left: 50px;
-}
+} */
 /* .waterfall {
     margin: 10px;
 } */
@@ -49,6 +49,7 @@ padding-bottom: 20px;
 .title-form {
   margin-bottom: 50px;
 }
+
 #map {
   height: 500px;
   width: 100%;
@@ -130,9 +131,9 @@ header .overlay {
   margin-left: 10px;
 }
 
-.alert-style {
+/* .alert-style {
   width: 500vh;
-}
+} */
 
 .overview-map {
   margin-top: 105px;
@@ -140,12 +141,16 @@ header .overlay {
 
 }
 
-/* to not make the name in the corner like it should be a clickable page, no link attached */
-#no-hover {
-  cursor: default;
+#create-waterfall{
+  margin-top: 150; 
+  margin-left: 30;
+  width: 1020;
 }
 
+#login-style {
+  margin-top: 80; 
 
+}
 
 
 /* Media Query for devices withi coarse pointers and no hover functionality */
@@ -167,4 +172,3 @@ select {
   width: 200px;
   padding: 2px;
 }
-
