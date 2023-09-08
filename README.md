@@ -13,6 +13,7 @@ To run this application on your local machine, follow these steps:
 ```bash
 git clone https://github.com/What-a-Waterfall-World/what-a-waterfall-world
 ```
+
 ### 2. Install Dependencies
 Navigate to the project directory and install the required dependencies using npm:
 
