@@ -1,20 +1,28 @@
+<div id="details-image-container">
+    <div class="d-flex h-100 text-center align-items-center">
+    <h1 class="waterfall-title position-absolute top-50 start-50 translate-middle">{{waterfall.name}}</h1>
+    <img src="{{waterfall.imageUrl}}" alt="picture of {{waterfall.name}}" class="inside-image w-100 position-absolute top-50 translate-middle-y">
+    </div>
+  </div>
+</div>
+
+
+
+
 {{! ***** DETAIL INFORMATION ABOUT THE WATERFALL *****}}
-<div class="waterfall-details">
-<h1>{{waterfall.name}}</h1>
+<div class="details-container mt-3" style="margin-left: 30">
 
-<img class="waterfall-imgs" src="{{waterfall.imageUrl}}" alt="picture of {{waterfall.name}}">
+<div class="address-container">
 
-<h3>Country:</h3>
-<h5>📍 {{waterfall.country}}</h5>
+  <h4>Location:</h4>
+  <p><span class="location-icon">📍</span> {{waterfall.country}}, {{waterfall.city}}, {{waterfall.postalCode}}</p>
+  
+  <h4>How to get to the waterfall:</h4>
+  <p>{{waterfall.transportation}}</p>
 
-<h3>City:</h3>
-<h5>📍 {{waterfall.city}}</h5>
+</div>
 
-<h3>Postal code:</h3>
-<h5>📍 {{waterfall.postalCode}}</h5>
 
-<h3>How to get to the waterfall:</h3>
-<h5>{{waterfall.transportation}}</h5>
 
 <br>
 
@@ -142,5 +150,6 @@
   </div>
 {{/each}}
 
+</div>
 </div>
 

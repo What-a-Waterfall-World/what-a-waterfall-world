@@ -16,8 +16,8 @@
 
 
 .waterfall-imgs {
-  width: 400px;
-  height: 400px;
+  width: 100vh;
+  height: auto;
   margin-bottom: 20px;
 }
 
@@ -97,6 +97,37 @@ header {
   margin-top: 30px;
 }
 
+/* ************************* */
+/* WATERFALL DETAILS PAGE */
+#details-image-container {
+  margin-top: 100px;
+  height: 75vh;
+  position: relative;
+  background-color: black;
+  min-height: 25rem;
+  overflow: hidden;
+  width: 100%;
+}
+
+.waterfall-details {
+  margin-top: 20px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.inside-image {
+  object-fit: cover;
+  height: 100%;
+}
+/* ************************* */
+/* ************************* */
+
+.waterfall-title {
+  color: #FFF;        /* White color for better visibility (can be adjusted) */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Optional shadow for better readability */
+  z-index: 1;         /* Place the title above the image */
+}
+
 header video {
   position: absolute;
   top: 50%;
@@ -139,8 +170,7 @@ header .overlay {
 
 .overview-map {
   margin-top: 105px;
-  height: 600px !important;
-
+  height: 100vh !important;
 }
 
 #create-waterfall{
@@ -151,13 +181,6 @@ header .overlay {
 
 #login-style, #signup-style {
   margin-top: 80; 
-}
-
-.waterfall-details {
-
-  margin-top: 150px;
-  margin-left: 50px;
-  margin-right: 50px;
 }
 
 
