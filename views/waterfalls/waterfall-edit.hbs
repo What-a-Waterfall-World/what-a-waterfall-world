@@ -1,12 +1,14 @@
 <div class="row">
+  <div id="create-waterfall">
+
   {{#unless currentUser}}
-    <div class="alert alert-danger col-6 offset-3" role="alert">
+    <div class="alert alert-danger col-6 offset-3" role="alert" style="width: 498;">
       Please log in first to edit the details of this waterfall or to delete your
       contribution.
     </div>
   {{/unless}}
-  <h1 class="text-center title-form">Change details of {{waterfall.name}}</h1>
-  <div class="col-6 offset-3">
+  <h1 class="title-form" style="margin-left: 30;">Change details of {{waterfall.name}}</h1>
+  <div class="col-6 offset-3" style="margin-left: 30">
     <form
       method="POST"
       action="/waterfall/{{waterfall._id}}/edit"
@@ -170,6 +172,7 @@
     <br />
 
   </div>
+</div>
 </div>
 
 {{! ***** ADD CONFIRMATION ALERT BEFORE DELETING A WATERFALL *****}}
