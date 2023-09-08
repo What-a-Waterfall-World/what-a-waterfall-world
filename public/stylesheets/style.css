@@ -147,9 +147,8 @@ header .overlay {
   width: 1020;
 }
 
-#login-style {
+#login-style, #signup-style {
   margin-top: 80; 
-
 }
 
 
